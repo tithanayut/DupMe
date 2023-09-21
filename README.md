@@ -1,5 +1,9 @@
 # DupMe
 
+## Preview
+
+[dupme.up.railway.app](https://dupme.up.railway.app)
+
 ## Pre-requisites
 
 - [Node.js v18](https://nodejs.org/en/download)

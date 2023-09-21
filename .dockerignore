@@ -1,0 +1,9 @@
+.git
+dist
+node_modules
+.eslintrc.cjs
+.dockerignore
+.gitignore
+.prettierrc
+Dockerfile
+README.md

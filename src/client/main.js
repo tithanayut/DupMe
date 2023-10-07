@@ -12,6 +12,16 @@ socket.on('connect', () => {
   alert(`Connected to server: ${socket.id}`);
 });
 
+socket.on('someonejoined', (nameOfJoiner) => {
+  document.querySelector('#name').innerHTML = nameOfJoiner;
+});
+
+document.querySelector('#name').innerHTML = 'hello';
+// document.querySelector('#name').style.color = 'red';
+document.querySelector('#name').addEventListener('click', () => {
+  socket.emit('startgame', document.querySelector('#lname').value, 'hard');
+});
+
 document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">

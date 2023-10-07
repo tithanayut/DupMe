@@ -17,6 +17,12 @@ app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), '
 
 io.on('connection', (socket) => {
   console.log('a user connected:', socket.id);
+
+  socket.on('startgame', (name, level) => {
+    console.log(`${name} joined game with level ${level}`);
+
+    io.emit('someonejoined', name);
+  });
 });
 
 server.listen(3000, () => {

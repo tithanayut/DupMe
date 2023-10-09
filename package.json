@@ -29,7 +29,9 @@
     "@socket.io/admin-ui": "^0.5.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "node-global-key-listener": "^0.1.1",
     "socket.io": "^4.7.2",
-    "socket.io-client": "^4.7.2"
+    "socket.io-client": "^4.7.2",
+    "sweetalert2": "^11.7.32"
   }
 }

@@ -9,3 +9,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.swal2-shown {
+  display: flex;
+  height: 100vh;
+}

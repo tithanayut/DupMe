@@ -3,6 +3,8 @@ import { createServer } from 'node:http';
 import { instrument } from '@socket.io/admin-ui';
 import cors from 'cors';
 import express from 'express';
+import { GlobalKeyboardListener } from 'node-global-key-listener';
+import os from 'os';
 import path from 'path';
 import { Server } from 'socket.io';
 import { fileURLToPath } from 'url';
@@ -29,32 +31,95 @@ instrument(io, { auth: false });
 let users = {};
 let rooms = [];
 
+/* Server program shows the number of concurrent clients that are online */
+let onHold = false;
+function reportConcurrentClients() {
+  if (onHold) return;
+  console.log(
+    `There are ${io.engine.clientsCount} clients connected, ${
+      Object.keys(users).length
+    } has entered their name: ${JSON.stringify(users, null, 2)}`,
+  );
+}
+
+/* Server has a reset button to reset player’s scores and current game. */
+const v = new GlobalKeyboardListener();
+function onReset(e) {
+  if (e.name === 'FORWARD SLASH') {
+    v.removeListener(onReset);
+    onHold = true;
+    io.emit('reset');
+    users = {};
+    rooms = [];
+    console.log('Game is resetting...');
+    setTimeout(() => {
+      v.addListener(onReset);
+      onHold = false;
+      console.log('Game reset complete!');
+      reportConcurrentClients();
+    }, 1500);
+  }
+}
+v.addListener(onReset);
+
 io.on('connection', (socket) => {
-  console.log('a user connected:', socket.id);
+  reportConcurrentClients();
+  socket.emit('rooms', rooms);
+
+  socket.on('getOtherClient', (done) => {
+    done(io.engine.clientsCount, Object.keys(users).length, rooms.length);
+  });
 
   socket.on('hello', (name, done) => {
-    users[socket.id] = {
-      name,
-      profilePicutre: `https://avatars.dicebear.com/api/avataaars/${name}.svg`,
-    };
-    done(rooms);
+    if (!Object.values(users).some((user) => user.name === name)) {
+      users[socket.id] = {
+        name,
+        profilePicutre: `https://avatars.dicebear.com/api/avataaars/${name}.svg`,
+      };
+      done(true, rooms);
+      reportConcurrentClients();
+    } else {
+      done(false);
+      return;
+    }
   });
 
   socket.on('disconnect', () => {
     delete users[socket.id];
+    const disconnectedRoom = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    if (disconnectedRoom) {
+      io.to(disconnectedRoom.name).emit('otherPlayerDisconnected');
+    }
     rooms = rooms.filter((room) => !room.users.some((user) => user.id === socket.id));
     io.emit('rooms', rooms);
+    reportConcurrentClients();
   });
 
   socket.on('newRoom', (roomName, done) => {
-    if (!rooms.includes(roomName)) {
+    if (!rooms.some((room) => room.name === roomName)) {
       rooms.push({
         name: roomName,
         users: [{ id: socket.id, name: users[socket.id].name }],
       });
       io.emit('rooms', rooms);
-
       socket.join(roomName);
+      done(true);
+    } else {
+      done(false);
+    }
+  });
+
+  socket.on('joinRoom', (roomName, done) => {
+    const room = rooms.find((room) => room.name === roomName);
+    if (room.users.length < 2) {
+      room.users.push({ id: socket.id, name: users[socket.id].name });
+      io.emit('rooms', rooms);
+      socket.join(roomName);
+
+      /* Server randomizes first player that will start the game. */
+      const turn = Math.floor(Math.random() * 2);
+      io.to(roomName).emit('startGame', room.users, room.users[turn]);
+
       done(true);
     } else {
       done(false);
@@ -62,6 +127,16 @@ io.on('connection', (socket) => {
   });
 });
 
+/* One of computer has server program and also game client. */
+/* Another computer has only game client that will directly connect to server. */
+/* Server’s IP and port will be set in your program’s source code. */
 server.listen(3000, () => {
-  console.log('🚀 DupMe is running at http://localhost:3000');
+  console.log('🚀 DupMe is listening on port 3000 (Server: http://localhost:3000)');
+  console.log(
+    'Possible server IP:',
+    Object.values(os.networkInterfaces())
+      .flat()
+      .find((i) => i.family === 'IPv4' && !i.internal).address,
+  );
+  console.log('Press / to reset');
 });

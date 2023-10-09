@@ -43,24 +43,29 @@ function reportConcurrentClients() {
 }
 
 /* Server has a reset button to reset player’s scores and current game. */
-const v = new GlobalKeyboardListener();
-function onReset(e) {
-  if (e.name === 'FORWARD SLASH') {
-    v.removeListener(onReset);
-    onHold = true;
-    io.emit('reset');
-    users = {};
-    rooms = [];
-    console.log('Game is resetting...');
-    setTimeout(() => {
-      v.addListener(onReset);
-      onHold = false;
-      console.log('Game reset complete!');
-      reportConcurrentClients();
-    }, 1500);
+try {
+  const v = new GlobalKeyboardListener();
+  // eslint-disable-next-line no-inner-declarations
+  function onReset(e) {
+    if (e.name === 'FORWARD SLASH') {
+      v.removeListener(onReset);
+      onHold = true;
+      io.emit('reset');
+      users = {};
+      rooms = [];
+      console.log('Game is resetting...');
+      setTimeout(() => {
+        v.addListener(onReset);
+        onHold = false;
+        console.log('Game reset complete!');
+        reportConcurrentClients();
+      }, 1500);
+    }
   }
+  v.addListener(onReset);
+} catch {
+  console.log('OS not supported');
 }
-v.addListener(onReset);
 
 io.on('connection', (socket) => {
   reportConcurrentClients();

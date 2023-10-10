@@ -139,9 +139,48 @@ io.on('connection', (socket) => {
     }
   });
 
+  socket.on('startTurnNew', () => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    const me = room.users.find((user) => user.id === socket.id);
+    io.to(room.name).emit('startAgainTUrn');
+  });
+
   socket.on('startTurn', () => {
     const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    if (room.turnCount) {
+      room.turnCount += 1;
+    } else {
+      room.turnCount = 1;
+    }
     io.to(room.name).emit('startTimer', 10);
+    setTimeout(() => {
+      io.to(room.name).emit('startGuess');
+      io.to(room.name).emit('startTimer', 20);
+    }, 10000);
+  });
+
+  socket.on('addMyScore', (add) => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('score', socket.id, add);
+  });
+  socket.on('minusMyScore', (minus) => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('score', socket.id, -minus);
+  });
+
+  socket.on('clearLog', () => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('clearLog');
+  });
+
+  socket.on('key', (key) => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('key', key);
+  });
+
+  socket.on('guessAllCorrect', () => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('guessAllCorrect', socket.id);
   });
 });
 

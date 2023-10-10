@@ -54,6 +54,10 @@ export function setupLobby(rooms) {
     store.set('users', users);
     store.set('turn', turn);
 
+    users.forEach((user) => {
+      store.set(user.id, 0);
+    });
+
     socket.off('rooms');
     socket.off('startGame');
     setupGame();

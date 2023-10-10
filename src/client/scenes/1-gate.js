@@ -10,7 +10,7 @@ export function setupGate() {
     Swal.fire({
       icon: 'info',
       title: 'Hello!',
-      text: `There are ${clientCount} clients online (${userCount} has entered their name), and ${roomCount} rooms available by the way.`,
+      text: `By the way, there are ${clientCount} clients online (${userCount} has entered their name), and ${roomCount} rooms available.`,
     });
   });
 
@@ -44,15 +44,13 @@ export function setupGate() {
       }
     });
   });
-  socket.on('otherPlayerDisconnected', () => {
-    Swal.fire({
+  socket.on('otherPlayerDisconnected', async () => {
+    await Swal.fire({
       icon: 'error',
       title: 'Oops...',
       text: 'Other player disconnected!',
     });
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
+    window.location.reload();
   });
   socket.on('reset', () => {
     Swal.fire({

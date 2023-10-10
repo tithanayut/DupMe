@@ -12,7 +12,7 @@ export function setupLobby(rooms) {
       newRooms.forEach((room) => {
         const roomEl = document.createElement('div');
         roomEl.innerHTML = `
-          <button class="flex justify-between items-center w-96 h-14 p-4 border-2 bg-gray-200 rounded-full">
+            <button class="flex justify-between items-center w-96 h-14 p-4 border-2 bg-gray-200 rounded-full">
               <p>${room.name}</p>
               <p> ${
                 room.users.some((user) => user.id === socket.id)

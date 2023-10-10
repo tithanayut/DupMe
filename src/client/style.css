@@ -14,3 +14,9 @@ body {
   display: flex;
   height: 100vh;
 }
+
+/* Example dark mode styles */
+.dark {
+  background-color: #333;
+  color: #fff;
+}

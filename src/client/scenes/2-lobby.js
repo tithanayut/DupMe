@@ -37,6 +37,7 @@ export function setupLobby(rooms) {
         } else {
           roomEl.querySelector('button').classList.add('bg-gray-400');
           roomEl.querySelector('button').classList.remove('bg-gray-200');
+          roomEl.querySelector('button').disabled = true;
         }
         document.querySelector('#rooms').appendChild(roomEl);
       });

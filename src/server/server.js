@@ -130,6 +130,11 @@ io.on('connection', (socket) => {
       done(false);
     }
   });
+
+  socket.on('startTurn', () => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('startTimer', 10);
+  });
 });
 
 /* One of computer has server program and also game client. */

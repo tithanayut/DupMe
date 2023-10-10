@@ -64,4 +64,15 @@ export function setupGate() {
       window.location.reload();
     }, 1000);
   });
+  // darkmode.js
+
+  // Function to toggle dark mode
+  function toggleDarkMode() {
+    const htmlElement = document.documentElement;
+    htmlElement.classList.toggle('dark'); // Toggle the 'dark' class on the <html> element
+  }
+
+  // Add an event listener to the button
+  const darkModeButton = document.getElementById('dark-mode-toggle-button');
+  darkModeButton.addEventListener('click', toggleDarkMode);
 }

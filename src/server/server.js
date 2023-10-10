@@ -67,6 +67,14 @@ try {
   console.log('OS not supported');
 }
 
+/* Creating an easter egg by listening */
+/* try {
+  const g = new GlobalKeyboardListener();
+  function inSetWith(e) {
+    if (e)
+  }
+} */
+
 io.on('connection', (socket) => {
   reportConcurrentClients();
   socket.emit('rooms', rooms);
@@ -129,6 +137,11 @@ io.on('connection', (socket) => {
     } else {
       done(false);
     }
+  });
+
+  socket.on('startTurn', () => {
+    const room = rooms.find((room) => room.users.some((user) => user.id === socket.id));
+    io.to(room.name).emit('startTimer', 10);
   });
 });
 

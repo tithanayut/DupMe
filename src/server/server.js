@@ -67,6 +67,14 @@ try {
   console.log('OS not supported');
 }
 
+/* Creating an easter egg by listening */
+/* try {
+  const g = new GlobalKeyboardListener();
+  function inSetWith(e) {
+    if (e)
+  }
+} */
+
 io.on('connection', (socket) => {
   reportConcurrentClients();
   socket.emit('rooms', rooms);

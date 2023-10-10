@@ -24,6 +24,14 @@ export function setupGate() {
   document.querySelector('#button-enter').addEventListener('click', () => {
     const name = document.querySelector('#input-name').value;
     store.set('name', name);
+    if (!name) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Name cannot be blank!',
+      });
+      return;
+    }
     socket.emit('hello', name, (success, rooms) => {
       if (success) {
         setupLobby(rooms);

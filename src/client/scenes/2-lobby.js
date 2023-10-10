@@ -12,7 +12,7 @@ export function setupLobby(rooms) {
       newRooms.forEach((room) => {
         const roomEl = document.createElement('div');
         roomEl.innerHTML = `
-            <button class="flex justify-between items-center w-96 h-14 p-4 border-2 bg-gray-200 rounded-full">
+          <button class="flex justify-between items-center w-96 h-14 p-4 border-2 bg-gray-200 rounded-full">
               <p>${room.name}</p>
               <p> ${
                 room.users.some((user) => user.id === socket.id)
@@ -65,7 +65,7 @@ export function setupLobby(rooms) {
           <div class="flex flex-col gap-1" id="form-create-room">
             <input id="input-room-name" type="text" placeholder="Room Name" class="w-96 h-12 p-4 border-2 focus:border-gray-600 border-gray-500 rounded-full outline-none" />
             <button id="button-create-room" class="w-96 h-10 bg-gray-500 hover:bg-gray-600 text-white rounded-full">Create New Room</button>
-            </div>
+            
           </div>
         </div>
         <div>

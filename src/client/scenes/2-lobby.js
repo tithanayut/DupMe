@@ -69,13 +69,9 @@ export function setupLobby(rooms) {
           </div>
         </div>
         <div>
-
-
         <button id="back" onClick="history.go(0)"
         class="fixed top-4 left-4 bg-gray-500 hover:bg-gray-600 text-white rounded-full px-4 py-2"> Exit
         </button>
-
-
           <div class="flex flex-col h-full justify-center items-center gap-4">
             <p class="text-3xl font-semibold text-gray-600">${store.get('name')}</p>
             <img src=${ghost} />          

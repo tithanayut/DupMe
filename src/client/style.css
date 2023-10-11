@@ -20,3 +20,37 @@ body {
   background-color: #333;
   color: #333;
 }
+
+/* In your CSS file (style.css), style the arrow buttons */
+.btnl {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  background-color: #333; /* Background color for the buttons */
+  color: white; /* Text color for the buttons */
+  border-radius: 50%; /* Makes the button circular */
+  transition: background-color 0.3s; /* Add a transition effect */
+  position: relative;
+  right: 60px;
+  bottom: 120px;
+}
+
+.btnr {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  background-color: #333; /* Background color for the buttons */
+  color: white; /* Text color for the buttons */
+  border-radius: 50%; /* Makes the button circular */
+  transition: background-color 0.3s; /* Add a transition effect */
+  position: relative;
+  left: 220px;
+  bottom: 120px;
+}
+
+/* Style for the avatar */
+.avatar {
+  width: 250px; /* Adjust the size as needed */
+  height: 250px;
+  position: static;
+}

@@ -108,10 +108,11 @@ io.on('connection', (socket) => {
     reportConcurrentClients();
   });
 
-  socket.on('newRoom', (roomName, done) => {
+  socket.on('newRoom', (roomName, level, done) => {
     if (!rooms.some((room) => room.name === roomName)) {
       rooms.push({
         name: roomName,
+        level,
         users: [{ id: socket.id, name: users[socket.id].name }],
       });
       io.emit('rooms', rooms);

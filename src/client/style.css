@@ -54,3 +54,7 @@ body {
   height: 250px;
   position: static;
 }
+
+* {
+  box-sizing: border-box;
+}

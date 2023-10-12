@@ -7,7 +7,31 @@
     <title>DupMe</title>
   </head>
   <body class="px-8 py-6">
-    <nav class="flex justify-end"><div id="socket-id"></div></nav>
+    <div id="bgmusic" class="mr-10">
+      <audio id="song" src="http://13.215.248.87/song.m4a" type="audio/mpeg"></audio>
+      <button
+        onclick="togleAudio()"
+        class="fixed bottom-4 right-15 bg-gray-500 hover:bg-gray-600 text-white rounded-full px-5 py-2"
+      >
+        music
+      </button>
+
+      <script>
+        var audio = true;
+        var sound = document.getElementById('song');
+        // Button click function
+        function togleAudio() {
+          if (audio == true) {
+            sound.pause();
+            audio = false;
+          } else if (audio == false) {
+            audio = true;
+            sound.play();
+          }
+        }
+      </script>
+    </div>
+
     <div id="app" class="w-full h-full"></div>
     <button
       id="dark-mode-toggle-button"

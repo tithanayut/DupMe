@@ -69,8 +69,17 @@ export function setupLobby(rooms) {
           <div id="rooms" class="flex flex-col gap-2"></div>
           <div class="flex flex-col gap-1" id="form-create-room">
             <input id="input-room-name" type="text" placeholder="Room Name" class="w-96 h-12 p-4 border-2 focus:border-gray-600 border-gray-500 rounded-full outline-none" />
+          
+            <button class="w-96 h-10 bg-gray-500 hover:bg-gray-600 text-white rounded-full">Select level :
+              <select id="select1" class="bg-gray-500 hover:bg-gray-600 text-white">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </button>
+ 
             <button id="button-create-room" class="w-96 h-10 bg-gray-500 hover:bg-gray-600 text-white rounded-full">Create New Room</button>
-            
+    
           </div>
         </div>
         <div>
@@ -95,8 +104,8 @@ export function setupLobby(rooms) {
       });
       return;
     }
-
-    socket.emit('newRoom', roomName, (success) => {
+    const level = document.querySelector('#select1');
+    socket.emit('newRoom', roomName, level, (success) => {
       if (success) {
         document.querySelector('#form-create-room').style.display = 'none';
       } else {

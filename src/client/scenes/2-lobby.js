@@ -13,7 +13,7 @@ export function setupLobby(rooms) {
         const roomEl = document.createElement('div');
         roomEl.innerHTML = `
             <button class="flex justify-between items-center w-96 h-14 p-4 border-2 bg-gray-200 rounded-full">
-              <p>${room.name}</p>
+              <p>${room.level} ${room.name}</p>
               <p> ${
                 room.users.some((user) => user.id === socket.id)
                   ? 'Waiting for other player'
@@ -79,9 +79,9 @@ export function setupLobby(rooms) {
 
             <button class="w-96 h-10 bg-gray-500 hover:bg-gray-600 text-white rounded-full">Select level :
               <select id="select1" class="bg-gray-500 hover:bg-gray-600 text-white">
-                <option value="1">Lv.1 Beginner</option>
-                <option value="2">Lv.2 Intermediate</option>
-                <option value="3">Lv.3 Advanced</option>
+                <option value="Lv.1">Lv.1 Beginner</option>
+                <option value="Lv.2">Lv.2 Intermediate</option>
+                <option value="Lv.3">Lv.3 Advanced</option>
               </select>
             </button>
  
@@ -139,6 +139,7 @@ export function setupLobby(rooms) {
   updateRooms(rooms);
   document.querySelector('#button-create-room').addEventListener('click', () => {
     const roomName = document.querySelector('#input-room-name').value;
+    const roomLevel = document.querySelector('#select1').value;
     if (!roomName) {
       Swal.fire({
         icon: 'error',
@@ -147,8 +148,8 @@ export function setupLobby(rooms) {
       });
       return;
     }
-    const level = document.querySelector('#select1');
-    socket.emit('newRoom', roomName, level, (success) => {
+
+    socket.emit('newRoom', roomName, roomLevel, (success) => {
       if (success) {
         document.querySelector('#form-create-room').style.display = 'none';
       } else {

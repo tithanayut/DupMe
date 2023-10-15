@@ -17,7 +17,7 @@ export async function setupGame() {
                           <p>Name: ${me.name} (You)</p>
                           <p>Score: <span id="${me.id}">${store.get(me.id)}</span></p>
                         </div>
-                        <button class="fixed bottom-16 left-8 bg-gray-500 hover:bg-gray-600 text-white rounded-full px-5 py-2">Hint</button>
+                        <button class="fixed bottom-4 left-4 bg-gray-500 hover:bg-gray-600 text-white rounded-full px-5 py-2">Hint</button>
                         <div class="flex flex-col gap-2 items-center">
                           <p id="whotext">${
                             store.get('turn').id === socket.id ? 'Your Turn' : 'Waiting for your turn'

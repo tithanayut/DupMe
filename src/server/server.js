@@ -108,15 +108,18 @@ io.on('connection', (socket) => {
     reportConcurrentClients();
   });
 
-  socket.on('newRoom', (roomName, level, done) => {
+  socket.on('newRoom', (roomName, roomLevel, done) => {
+    //check if recieved level for the room
+    console.log(`Level for this room: ${roomLevel}`);
     if (!rooms.some((room) => room.name === roomName)) {
       rooms.push({
         name: roomName,
-        level,
-        users: [{ id: socket.id, name: users[socket.id].name }],
+        level: roomLevel,
+        users: [{ id: socket.id, name: users[socket.id].name, level: users[socket.id].level }],
       });
       io.emit('rooms', rooms);
       socket.join(roomName);
+
       done(true);
     } else {
       done(false);

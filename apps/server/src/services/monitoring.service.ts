@@ -24,8 +24,8 @@ export const MonitoringService = {
   },
   /* Server has a reset button to reset player’s scores and current game. */
   setupServerResetListener: () => {
-    const listener = new GlobalKeyboardListener();
     try {
+      const listener = new GlobalKeyboardListener();
       listener.addListener((event) => {
         if (event.name === 'FORWARD SLASH' && !debounced) {
           debounced = true;

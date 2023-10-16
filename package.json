@@ -5,7 +5,8 @@
     "dev": "concurrently -c auto --names CLIENT,SERVER npm:dev:client npm:dev:server",
     "dev:client": "pnpm --filter client dev",
     "dev:server": "pnpm --filter server dev",
-    "build": "pnpm --filter client,server build",
+    "build": "pnpm --filter client --filter server build",
+    "start": "node apps/server/dist/server.js",
     "postinstall": "husky install"
   },
   "dependencies": {

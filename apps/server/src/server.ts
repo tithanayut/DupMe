@@ -7,7 +7,6 @@ import path from 'path';
 import myip from 'quick-local-ip';
 import { Server } from 'socket.io';
 
-import { NODE_ENV } from './common/env';
 import { GameService, RoomService } from './services/gameroom.service';
 import { MonitoringService } from './services/monitoring.service';
 import { PlayerService } from './services/player.service';
@@ -21,11 +20,8 @@ export const io = new Server(server, {
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(NODE_ENV === 'production' ? './dist/frontend' : path.join(__dirname, '../../dist')));
-app.use(
-  '/admin',
-  express.static(NODE_ENV === 'production' ? './dist/admin-ui' : './node_modules/@socket.io/admin-ui/ui/dist'),
-);
+app.use('/', express.static(path.resolve(__dirname, './dist')));
+app.use('/admin', express.static(path.resolve(__dirname, './node_modules/@socket.io/admin-ui/ui/dist')));
 
 MonitoringService.setupServerResetListener();
 

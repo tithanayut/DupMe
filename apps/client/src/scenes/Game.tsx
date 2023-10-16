@@ -24,7 +24,7 @@ function GameState() {
 }
 
 export function Game() {
-  const { myRoom } = useGame();
+  const { myRoom, myPlayerIndex } = useGame();
 
   const onKeyClick = (key: string) => {
     socket.emit('key', key);
@@ -39,7 +39,7 @@ export function Game() {
       <Timer />
       <KeyStroke />
       {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
-        <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} />
+        <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
       ))}
     </div>
   );

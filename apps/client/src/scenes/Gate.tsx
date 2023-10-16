@@ -58,7 +58,7 @@ export function Gate() {
               });
               return;
             }
-            onRegister(nameRef.current?.value, '/assets/Profile1.jpg');
+            onRegister(nameRef.current?.value, profilePicture);
           }}
         >
           Enter

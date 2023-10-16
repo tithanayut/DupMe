@@ -49,6 +49,11 @@ export const RoomService = {
     io.emit('rooms', rooms);
   },
   joinRoom: (roomName: string, socketId: string) => {
+    const existingRoom = rooms.find((room) => room.players.some((player) => player?.socketId === socketId));
+    if (existingRoom) {
+      RoomService.terminateRoom(existingRoom.name);
+    }
+
     const room = RoomService.getRoom(roomName);
     if (room.players[1]) {
       throw new Error(`Room ${roomName} is full`);

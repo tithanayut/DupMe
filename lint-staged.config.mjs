@@ -1,5 +1,5 @@
 export default {
-  '*.js': ['eslint', 'prettier --write'],
+  '*.{js,tsx,ts}': ['eslint --fix', 'prettier --write'],
   '*.css': ['prettier --write'],
   '*.html': ['prettier --write'],
 };

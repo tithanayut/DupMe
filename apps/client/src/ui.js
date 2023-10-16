@@ -1,5 +1,3 @@
-export const store = new Map();
-
 const toggleDarkMode = () => {
   const body = document.body;
   body.classList.toggle('dark-mode'); // Add or remove the 'dark-mode' class to toggle dark mode

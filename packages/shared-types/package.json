@@ -1,0 +1,5 @@
+{
+  "name": "@dupme/shared-types",
+  "private": true,
+  "main": "types.ts"
+}

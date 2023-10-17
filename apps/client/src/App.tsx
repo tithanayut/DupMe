@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 
+import { MySwal } from './common/alert';
 import { socket } from './common/socket';
 import { useGame } from './contexts/GameContext';
 import { Elevator } from './scenes/Elevator';
@@ -15,7 +16,11 @@ export function App() {
     if (bootstrapped.current) return;
     bootstrapped.current = true;
     socket.emit('hello', (clientCount: number, registeredUserCount: number, users: string) => {
-      console.log(`${clientCount} ${registeredUserCount} ${users}`);
+      MySwal.fire({
+        icon: 'info',
+        title: 'Hello!',
+        text: `There are ${clientCount} clients connected, ${registeredUserCount} have registered: ${users}`,
+      });
     });
   }, []);
 

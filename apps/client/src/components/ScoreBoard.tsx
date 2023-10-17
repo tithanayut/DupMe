@@ -1,3 +1,4 @@
+import { socket } from '../common/socket';
 import { useGame } from '../contexts/GameContext';
 
 export function ScoreBoard() {
@@ -10,7 +11,15 @@ export function ScoreBoard() {
     <div>
       <p>
         <img src={me?.profilePicture} width={100} />
-        Player 1: {me?.name} (You) | {myRoom?.score[myPlayerIndex]}
+        Player 1: {me?.name} (You) | {myRoom?.score[myPlayerIndex]} (
+        <button
+          onClick={() => {
+            window.open(`http://localhost:3000/payment?socketId=${socket.id}`);
+          }}
+        >
+          Buy 100,000 points
+        </button>
+        )
       </p>
       <p>
         <img src={other?.profilePicture} width={100} />

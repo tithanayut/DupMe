@@ -7,6 +7,8 @@ import path from 'path';
 import myip from 'quick-local-ip';
 import { Server } from 'socket.io';
 
+import { PAYMENT_ENABLED } from './common/env';
+import { paymentRoute } from './payment';
 import { GameService, RoomService } from './services/gameroom.service';
 import { MonitoringService } from './services/monitoring.service';
 import { PlayerService } from './services/player.service';
@@ -26,6 +28,10 @@ app.use('/admin', express.static(path.resolve(__dirname, './node_modules/@socket
 MonitoringService.setupServerResetListener();
 
 instrument(io, { auth: false });
+
+if (PAYMENT_ENABLED) {
+  app.use('/payment', paymentRoute);
+}
 
 io.on('connection', (socket) => {
   MonitoringService.reportConcurrentClients();

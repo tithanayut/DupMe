@@ -14,7 +14,11 @@ export function ScoreBoard() {
         Player 1: {me?.name} (You) | {myRoom?.score[myPlayerIndex]} (
         <button
           onClick={() => {
-            window.open(`http://localhost:3000/payment?socketId=${socket.id}`);
+            window.open(
+              import.meta.env.MODE === 'development'
+                ? `http://localhost:3000/payment?socketId=${socket.id}`
+                : `https://dupme.up.railway.app/payment?socketId=${socket.id}`,
+            );
           }}
         >
           Buy 100,000 points

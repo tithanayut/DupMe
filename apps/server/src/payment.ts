@@ -30,7 +30,7 @@ paymentRoute.get('/', async (req, res) => {
       socketId,
     },
     success_url: `${SITE_BASE_URL}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${SITE_BASE_URL}/http://localhost:3000/payment/cancel`,
+    cancel_url: `${SITE_BASE_URL}/payment/cancel`,
   });
 
   res.redirect(303, session.url!);

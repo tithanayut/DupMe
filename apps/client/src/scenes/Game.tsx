@@ -23,13 +23,23 @@ function GameState() {
   );
 }
 
+function genRandomKey() {
+  const characters = 'ABCDE';
+  let result = '';
+  for (let i = 0; i < 5; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters[randomIndex];
+  }
+  return result;
+}
+
 export function Game() {
   const { myRoom, myPlayerIndex } = useGame();
 
   const onKeyClick = (key: string) => {
     socket.emit('key', key);
   };
-
+  console.log(myRoom);
   if (myRoom?.ended) return <Exit />;
   if (!myRoom?.ready[0] || !myRoom?.ready[1]) return <Break />;
   return (
@@ -38,6 +48,18 @@ export function Game() {
       <ScoreBoard />
       <Timer />
       <KeyStroke />
+
+      <button
+        onClick={() => {
+          var random = genRandomKey();
+          for (const r of random) {
+            onKeyClick(r);
+          }
+        }}
+      >
+        random
+      </button>
+
       {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
         <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
       ))}

@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import { Stripe } from 'stripe';
 
-import { STRIPE_SECRET_KEY } from './common/env';
+import { NODE_ENV, STRIPE_SECRET_KEY } from './common/env';
 import { RoomService } from './services/gameroom.service';
 import { ScoreService } from './services/score.service';
+
+const SITE_BASE_URL = NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://dupme.up.railway.app';
 
 const stripe = new Stripe(STRIPE_SECRET_KEY, {
   apiVersion: '2023-10-16',
@@ -27,8 +29,8 @@ paymentRoute.get('/', async (req, res) => {
     metadata: {
       socketId,
     },
-    success_url: `http://localhost:3000/payment/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: 'http://localhost:3000/payment/cancel',
+    success_url: `${SITE_BASE_URL}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${SITE_BASE_URL}/http://localhost:3000/payment/cancel`,
   });
 
   res.redirect(303, session.url!);

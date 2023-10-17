@@ -7,7 +7,7 @@ import path from 'path';
 import myip from 'quick-local-ip';
 import { Server } from 'socket.io';
 
-import { PAYMENT_ENABLED } from './common/env';
+import { PAYMENT_ENABLED, PORT } from './common/env';
 import { paymentRoute } from './payment';
 import { GameService, RoomService } from './services/gameroom.service';
 import { MonitoringService } from './services/monitoring.service';
@@ -102,8 +102,8 @@ io.on('connection', (socket) => {
 /* One of computer has server program and also game client. */
 /* Another computer has only game client that will directly connect to server. */
 /* Server’s IP and port will be set in your program’s source code. */
-server.listen(3000, () => {
-  console.log('🚀 DupMe is listening on port 3000 (Server: http://localhost:3000)');
+server.listen(PORT, () => {
+  console.log(`🚀 DupMe is listening on port ${PORT} (Server: http://localhost:${PORT})`);
   console.log('Possible server IP:', myip.getLocalIP4());
   console.log('Press / to reset');
 });

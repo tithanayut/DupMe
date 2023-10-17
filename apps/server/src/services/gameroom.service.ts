@@ -29,6 +29,16 @@ export const RoomService = {
   createRoom: (name: string, level: RoomLevel, socketId: string, turn: 0 | 1) => {
     if (rooms.some((room) => room.name === name)) throw new Error(`Room name is already taken`);
     const player = PlayerService.getPlayer(socketId);
+
+    let keycount: number;
+    if (level == RoomLevel.LV1) {
+      keycount = 5;
+    } else if (level == RoomLevel.LV2) {
+      keycount = 6;
+    } else if (level == RoomLevel.LV3) {
+      keycount = 7;
+    } else keycount = 5;
+
     rooms.push({
       name,
       level,
@@ -37,7 +47,7 @@ export const RoomService = {
       ended: false,
 
       ready: [false, false],
-      keycount: 5,
+      keycount: keycount,
       turn,
       round: 0,
       state: 'showing',

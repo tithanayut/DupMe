@@ -1,5 +1,10 @@
 {
   "name": "@dupme/shared-types",
   "private": true,
-  "main": "types.ts"
+  "main": "./dist/types.js",
+  "types": "./dist/types.d.ts",
+  "scripts": {
+    "build": "tsc -d",
+    "postinstall": "pnpm build"
+  }
 }

@@ -1,3 +1,4 @@
+import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
 import { KeyButton } from '../components/KeyButton';
 import { KeyStroke } from '../components/KeyStroke';
@@ -48,6 +49,26 @@ export function Game() {
       <ScoreBoard />
       <Timer />
       <KeyStroke />
+
+      {myRoom?.turn === myPlayerIndex && myRoom.state === 'guessing' && (
+        <button
+          onClick={() => {
+            if (myRoom.keys.length != myRoom.guessedKeys.length) {
+              MySwal.fire({
+                icon: 'question',
+                title: myRoom.keys[myRoom.guessedKeys.length],
+              });
+            } else {
+              MySwal.fire({
+                icon: 'error',
+                title: `All answer has been guessed`,
+              });
+            }
+          }}
+        >
+          Hint
+        </button>
+      )}
 
       <button
         onClick={() => {

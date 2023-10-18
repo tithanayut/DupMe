@@ -15,21 +15,45 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
   ]);
 
   return (
-    <div>
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', height: '100%' }}>
       <button
+        style={{
+          fontSize: '20px',
+          fontWeight: 'bold',
+          borderRadius: '50%',
+          backgroundColor: 'grey',
+          color: 'white',
+          width: '40px',
+          height: '40px',
+          lineHeight: '40px',
+          marginTop: '90px',
+        }}
         onClick={() => {
           onChange(options[(options.indexOf(value) - 1 + options.length) % options.length]);
         }}
       >
-        Prev
+        &lt;
       </button>
-      <img src={value} width={100} />
+      <div style={{ margin: '20px 20px 40px 20px' }}>
+        <img src={value} width={150} height={150} style={{ marginTop: '25%' }} />
+      </div>
       <button
+        style={{
+          fontSize: '20px',
+          fontWeight: 'bold',
+          borderRadius: '50%',
+          backgroundColor: 'grey',
+          color: 'white',
+          width: '40px',
+          height: '40px',
+          lineHeight: '40px',
+          marginTop: '90px',
+        }}
         onClick={() => {
           onChange(options[(options.indexOf(value) + 1) % options.length]);
         }}
       >
-        Next
+        &gt;
       </button>
       <Camera
         onCapture={(data) => {

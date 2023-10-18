@@ -41,13 +41,29 @@ export function Gate() {
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <p>Select your profile picture</p>
+      <p
+        style={{
+          position: 'absolute',
+          top: '5%',
+          left: '50%',
+          transform: 'translate(-50%, 0)',
+          fontSize: '12px',
+        }}
+      >
+        Select your profile picture
+      </p>
       <form
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
         </div>
         <input
@@ -57,12 +73,20 @@ export function Gate() {
             left: '50%',
             transform: 'translate(-50%, 0)',
             textAlign: 'center',
+            border: '2px solid darkgrey',
+            borderRadius: '20px',
           }}
           type="text"
           placeholder="Your Name"
           ref={nameRef}
         />
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <div
             style={{ position: 'absolute', bottom: '25%', left: '50%', transform: 'translate(-50%, 0)' }}
             ref={googleSignInRef}

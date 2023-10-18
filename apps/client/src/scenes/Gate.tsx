@@ -50,9 +50,23 @@ export function Gate() {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
         </div>
-        <input style={{ textAlign: 'center' }} type="text" placeholder="Your Name" ref={nameRef} />
+        <input
+          style={{
+            position: 'absolute',
+            bottom: '35%',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
+            textAlign: 'center',
+          }}
+          type="text"
+          placeholder="Your Name"
+          ref={nameRef}
+        />
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <div ref={googleSignInRef}></div>
+          <div
+            style={{ position: 'absolute', bottom: '25%', left: '50%', transform: 'translate(-50%, 0)' }}
+            ref={googleSignInRef}
+          ></div>
         </div>
         <button
           className="enter-btn"

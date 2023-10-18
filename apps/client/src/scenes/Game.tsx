@@ -71,7 +71,7 @@ export function Game() {
             }
           }}
         >
-          Random
+          Random🎲
         </button>
       )}
 
@@ -94,17 +94,6 @@ export function Game() {
           Hint💡
         </button>
       )}
-
-      <button
-        onClick={() => {
-          var random = genRandomKey();
-          for (const r of random) {
-            onKeyClick(r);
-          }
-        }}
-      >
-        Random🎲
-      </button>
 
       {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
         <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />

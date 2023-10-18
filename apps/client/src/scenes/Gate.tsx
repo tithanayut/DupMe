@@ -40,15 +40,22 @@ export function Gate() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
+      <p>Select your profile picture</p>
       <form
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
-        <input type="text" placeholder="Your Name" ref={nameRef} />
-        <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
+        </div>
+        <input style={{ textAlign: 'center' }} type="text" placeholder="Your Name" ref={nameRef} />
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div ref={googleSignInRef}></div>
+        </div>
         <button
+          className="enter-btn"
           onClick={() => {
             if (!nameRef.current || nameRef.current.value === '') {
               MySwal.fire({
@@ -61,11 +68,9 @@ export function Gate() {
             onRegister(nameRef.current?.value, profilePicture);
           }}
         >
-          Enter
+          ENTER
         </button>
       </form>
-      <p> OR</p>
-      <div ref={googleSignInRef}></div>
     </div>
   );
 }

@@ -66,7 +66,7 @@ export function Game() {
             }
           }}
         >
-          Hint
+          Hint💡
         </button>
       )}
 
@@ -78,7 +78,7 @@ export function Game() {
           }
         }}
       >
-        random
+        Random🎲
       </button>
 
       {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (

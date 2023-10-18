@@ -61,3 +61,10 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.transparent-button {
+  background-color: transparent;
+  font-size: 30px;
+  position: absolute;
+  right: 10px;
+}

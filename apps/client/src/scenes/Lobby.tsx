@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 
 import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
@@ -7,7 +7,19 @@ import { useGame } from '../contexts/GameContext';
 export function Lobby() {
   const nameRef = useRef<HTMLInputElement>(null);
   const levelRef = useRef<HTMLSelectElement>(null);
+  const messageRef = useRef<HTMLInputElement>(null);
   const { me, rooms, myRoom } = useGame();
+  const [messages, setMessages] = useState<string[]>([]);
+
+  useEffect(() => {
+    const onNewMessage = (message: string) => {
+      setMessages((m) => [...m, message]);
+    };
+    socket.on('msg', onNewMessage);
+    return () => {
+      socket.off('msg', onNewMessage);
+    };
+  }, []);
 
   const onCreateRoom = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -68,6 +80,32 @@ export function Lobby() {
       ) : (
         'Waiting for others to join!'
       )}
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+        }}
+      >
+        {messages.map((message, idx) => (
+          <p key={message + idx}>{message}</p>
+        ))}
+        <input type="text" placeholder="Your Message" ref={messageRef} />
+        <button
+          onClick={() => {
+            if (!messageRef.current || messageRef.current.value === '') {
+              MySwal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Message cannot be blank!',
+              });
+              return;
+            }
+            socket.emit('msg', messageRef.current.value);
+            messageRef.current.value = '';
+          }}
+        >
+          Enter
+        </button>
+      </form>
     </div>
   );
 }

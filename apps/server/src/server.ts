@@ -97,6 +97,10 @@ io.on('connection', (socket) => {
   socket.on('playagain', () => {
     GameService.replay(RoomService.getPlayerRoom(socket.id).name);
   });
+
+  socket.on('msg', (message) => {
+    io.emit('msg', PlayerService.getPlayer(socket.id).name + ' : ' + message);
+  });
 });
 
 /* One of computer has server program and also game client. */

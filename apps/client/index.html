@@ -10,12 +10,7 @@
   <body>
     <div id="bgmusic" class="mr-10">
       <audio id="song" src="/assets/song.mp3" type="audio/mpeg"></audio>
-      <button
-        onclick="togleAudio()"
-        class="fixed bottom-16 right-4 bg-gray-500 hover:bg-gray-600 text-white rounded-full px-5 py-2"
-      >
-        Music
-      </button>
+      <button onclick="togleAudio()" class="top-36 transparent-button">🔇</button>
 
       <script>
         var audio = false;
@@ -25,19 +20,17 @@
           if (audio == true) {
             sound.pause();
             audio = false;
+            document.querySelector('button').textContent = '🔇';
           } else if (audio == false) {
             audio = true;
             sound.play();
+            document.querySelector('button').textContent = '🔊';
           }
         }
       </script>
     </div>
-    <button
-      id="dark-mode-toggle-button"
-      class="fixed bottom-4 right-4 bg-gray-500 hover:bg-gray-600 text-white rounded-full px-4 py-2"
-    >
-      Dark Mode
-    </button>
+    <button id="dark-mode-toggle-button" class="top-20 transparent-button">🌓</button>
+    <button class="top-4 transparent-button">❓</button>
 
     <!-- React Root -->
     <div id="root"></div>

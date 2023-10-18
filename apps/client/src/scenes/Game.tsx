@@ -1,3 +1,4 @@
+import { RoomLevel } from '@dupme/shared-types';
 import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
 import { KeyButton } from '../components/KeyButton';
@@ -24,11 +25,12 @@ function GameState() {
   );
 }
 
-function genRandomKey() {
-  const characters = 'ABCDE';
+function genRandomKey(length: number) {
+  const characters = 'ABCDEFG';
+  let cha = characters.slice(0, length);
   let result = '';
-  for (let i = 0; i < 5; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * cha.length);
     result += characters[randomIndex];
   }
   return result;
@@ -50,6 +52,29 @@ export function Game() {
       <Timer />
       <KeyStroke />
 
+
+      {myRoom?.turn == myPlayerIndex && myRoom.state == 'showing' && (
+        <button
+          onClick={() => {
+            var random = genRandomKey(myRoom.keycount);
+
+            // if (myRoom.level == RoomLevel.LV1) {
+            //   var random = genRandomKey(5);
+            // } else if (myRoom.level == RoomLevel.LV2) {
+            //   var random = genRandomKey(6);
+            // } else if (myRoom.level == RoomLevel.LV3) {
+            //   var random = genRandomKey(7); //myRoom.keycount
+            // } else var random = genRandomKey(5);
+
+            for (const r of random) {
+              onKeyClick(r);
+            }
+          }}
+        >
+          Random
+        </button>
+      )}
+
       {myRoom?.turn === myPlayerIndex && myRoom.state === 'guessing' && (
         <button
           onClick={() => {
@@ -69,17 +94,6 @@ export function Game() {
           Hint
         </button>
       )}
-
-      <button
-        onClick={() => {
-          var random = genRandomKey();
-          for (const r of random) {
-            onKeyClick(r);
-          }
-        }}
-      >
-        random
-      </button>
 
       {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
         <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />

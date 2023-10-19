@@ -58,7 +58,7 @@ export function Lobby() {
   return (
     <div>
       <div>
-        <button id="back" onClick={() => window.history.go(0)}>
+        <button id="back" onClick={() => window.location.reload()}>
           Exit
         </button>
       </div>

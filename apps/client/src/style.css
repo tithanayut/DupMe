@@ -25,6 +25,12 @@ body {
   color: #fff;
 }
 
+.dark input,
+.dark select {
+  background-color: #555;
+  color: #fff;
+}
+
 /* In your CSS file (style.css), style the arrow buttons */
 .btnl {
   width: 40px;

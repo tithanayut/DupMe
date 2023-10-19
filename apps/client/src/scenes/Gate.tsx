@@ -75,6 +75,7 @@ export function Gate() {
             textAlign: 'center',
             border: '2px solid darkgrey',
             borderRadius: '20px',
+            color: 'black',
           }}
           type="text"
           placeholder="Your Name"
@@ -88,7 +89,12 @@ export function Gate() {
           }}
         >
           <div
-            style={{ position: 'absolute', bottom: '25%', left: '50%', transform: 'translate(-50%, 0)' }}
+            style={{
+              position: 'absolute',
+              bottom: '25%',
+              left: '50%',
+              transform: 'translate(-50%, 0)',
+            }}
             ref={googleSignInRef}
           ></div>
         </div>

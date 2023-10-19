@@ -57,6 +57,11 @@ export function Lobby() {
 
   return (
     <div>
+      <div>
+        <button id="back" onClick={() => window.history.go(0)}>
+          Exit
+        </button>
+      </div>
       Welcome {me?.name} <img src={me?.profilePicture} width={100} />
       {rooms.map((room) => (
         <button

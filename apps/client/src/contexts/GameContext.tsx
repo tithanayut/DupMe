@@ -1,6 +1,7 @@
 import { Me, Room } from '@dupme/shared-types';
 import { createContext, ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 
+import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
 
 interface GameContextType {
@@ -41,6 +42,21 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     socket.emit('info', (rooms: Room[]) => {
       setRooms(rooms);
     });
+  }, []);
+
+  useEffect(() => {
+    const onReset = async () => {
+      await MySwal.fire({
+        icon: 'warning',
+        title: 'Oh no!',
+        text: 'The server has been reset. Everything will begin from scratch.',
+      });
+      window.location.reload();
+    };
+    socket.on('reset', onReset);
+    return () => {
+      socket.off('reset', onReset);
+    };
   }, []);
 
   return (

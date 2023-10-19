@@ -1,5 +1,6 @@
 import { socket } from '../common/socket';
 import { useGame } from '../contexts/GameContext';
+//import piano from "./../assets/piano.png";
 
 export function Elevator() {
   const { myRoom, myPlayerIndex } = useGame();
@@ -16,24 +17,26 @@ export function Elevator() {
   //style={{ backgroundImage:`url(${image})` }}
   return (
     // <div style={{ backgroundImage: 'url(/break.png)' }}>
-    <div className=" mt-40">
-      <p className="w-fit mx-auto ">
-        <span className="flex justify-center bg-blue-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
-          <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
-            {myRoom?.level}
-          </span>{' '}
-          : <span className="ml-2">{myRoom?.name}</span>
-        </span>
-      </p>
-      <p className="max-w-2xl mx-auto flex justify-center text-6xl mt-10">
-        Other player is {myRoom?.ready[otherPlayerIndex] ? 'Ready' : 'Not Ready'}
-      </p>
+    <div className="bg-rose-200 w-screen h-screen">
+      <img src="/assets/piano.png" />
+      <div className=" mt-10">
+        <p className="w-fit mx-auto ">
+          <span className="flex justify-center bg-blue-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
+            <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
+              {myRoom?.level}
+            </span>{' '}
+            : <span className="ml-2">{myRoom?.name}</span>
+          </span>
+        </p>
+        <p className="text-center mx-auto flex justify-center text-6xl mt-10">
+          Other player is {myRoom?.ready[otherPlayerIndex] ? 'Ready' : 'Not Ready'}
+        </p>
 
-      <p className="max-w-2xl mx-auto flex justify-center text-2xl mt-10 ">Are you ready?</p>
-      <div className="max-w-[15%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-6xl font-bold rounded-full py-4 px-8 mt-10">
-        <button onClick={onClickReady}>Ready</button>
+        <p className="max-w-2xl mx-auto flex justify-center text-2xl mt-10 ">Are you ready?</p>
+        <div className="max-w-[15%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">
+          <button onClick={onClickReady}>Ready</button>
+        </div>
       </div>
     </div>
-    // </div>
   );
 }

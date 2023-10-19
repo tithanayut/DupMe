@@ -1,4 +1,5 @@
 import { RoomLevel } from '@dupme/shared-types';
+
 import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
 import { KeyButton } from '../components/KeyButton';
@@ -52,7 +53,6 @@ export function Game() {
       <Timer />
       <KeyStroke />
 
-
       {myRoom?.turn == myPlayerIndex && myRoom.state == 'showing' && (
         <button
           onClick={() => {
@@ -71,7 +71,7 @@ export function Game() {
             }
           }}
         >
-          Random
+          Random🎲
         </button>
       )}
 
@@ -91,7 +91,7 @@ export function Game() {
             }
           }}
         >
-          Hint
+          Hint💡
         </button>
       )}
 

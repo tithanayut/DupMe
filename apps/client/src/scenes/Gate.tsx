@@ -40,15 +40,60 @@ export function Gate() {
   };
 
   return (
-    <div>
+    <div style={{ textAlign: 'center' }}>
+      <p
+        style={{
+          position: 'absolute',
+          top: '5%',
+          left: '50%',
+          transform: 'translate(-50%, 0)',
+          fontSize: '12px',
+        }}
+      >
+        Select your profile picture
+      </p>
       <form
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
-        <input type="text" placeholder="Your Name" ref={nameRef} />
-        <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
+        </div>
+        <input
+          style={{
+            position: 'absolute',
+            bottom: '35%',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
+            textAlign: 'center',
+            border: '2px solid darkgrey',
+            borderRadius: '20px',
+          }}
+          type="text"
+          placeholder="Your Name"
+          ref={nameRef}
+        />
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{ position: 'absolute', bottom: '25%', left: '50%', transform: 'translate(-50%, 0)' }}
+            ref={googleSignInRef}
+          ></div>
+        </div>
         <button
+          className="enter-btn"
           onClick={() => {
             if (!nameRef.current || nameRef.current.value === '') {
               MySwal.fire({
@@ -61,11 +106,9 @@ export function Gate() {
             onRegister(nameRef.current?.value, profilePicture);
           }}
         >
-          Enter
+          ENTER
         </button>
       </form>
-      <p> OR</p>
-      <div ref={googleSignInRef}></div>
     </div>
   );
 }

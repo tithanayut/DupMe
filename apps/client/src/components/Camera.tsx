@@ -13,6 +13,16 @@ export function Camera({ onCapture }: CameraProps) {
     <div>
       {!cameraActive ? (
         <button
+          style={{
+            position: 'absolute',
+            bottom: '40%',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
+            border: '2px black solid',
+            backgroundColor: 'lightgrey',
+            borderRadius: '8px',
+            width: '140px',
+          }}
           onClick={async () => {
             if (!videoRef.current) return;
             stream.current = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
@@ -20,10 +30,20 @@ export function Camera({ onCapture }: CameraProps) {
             setCameraActive(true);
           }}
         >
-          Start Camera
+          📷 Start Camera
         </button>
       ) : (
         <button
+          style={{
+            position: 'absolute',
+            bottom: '40%',
+            left: '50%',
+            transform: 'translate(-50%, 0)',
+            border: '2px black solid',
+            backgroundColor: 'lightgrey',
+            borderRadius: '8px',
+            width: '140px',
+          }}
           onClick={() => {
             if (!canvasRef.current || !videoRef.current || !stream.current) return;
             canvasRef.current
@@ -39,15 +59,20 @@ export function Camera({ onCapture }: CameraProps) {
             });
           }}
         >
-          Take Photo
+          📸 Take Photo
         </button>
       )}
       <video
         ref={videoRef}
-        width="320"
-        height="240"
+        width="200px"
         autoPlay
-        style={{ display: cameraActive ? 'block' : 'none' }}
+        style={{
+          display: cameraActive ? 'block' : 'none',
+          position: 'absolute',
+          bottom: '45%',
+          left: '50%',
+          transform: 'translate(-50%, 0)',
+        }}
       ></video>
       <canvas ref={canvasRef} width="320" height="240" className="hidden"></canvas>
     </div>

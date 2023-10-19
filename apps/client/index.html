@@ -34,7 +34,15 @@
       </script>
     </div>
     <button id="dark-mode-toggle-button" class="top-20 transparent-button">🌓</button>
-    <button class="top-4 transparent-button">❓</button>
+    <button class="top-4 transparent-button" onclick="infoPopUp()">❓</button>
+
+    <script>
+      function infoPopUp() {
+        alert(
+          'DupMe is a multiplayer piano game. You can play with your friends or with random people. You can also create your own room and invite your friends to play with you. Have fun!',
+        );
+      }
+    </script>
 
     <!-- React Root -->
     <div id="root"></div>

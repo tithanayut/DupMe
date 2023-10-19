@@ -9,19 +9,72 @@ function Result() {
 
   if (myScore > otherPlayerScore) {
     return (
-      <p>
-        You win with {myScore} (you) vs {otherPlayerScore}, you will be the first player next round
-      </p>
+      <div
+        style={{
+          textAlign: 'center',
+          position: 'absolute',
+          fontSize: '25px',
+          top: '20%',
+        }}
+      >
+        <p
+          style={{
+            fontWeight: 'bold',
+            fontSize: '60px',
+          }}
+        >
+          WIN
+        </p>
+        <p>
+          With score {myScore} (you) vs score {otherPlayerScore}, you will be the first player next round
+        </p>
+      </div>
     );
   }
   if (myScore < otherPlayerScore) {
     return (
-      <p>
-        You lose with {myScore} (you) vs {otherPlayerScore}, you will be the second player next round
-      </p>
+      <div
+        style={{
+          textAlign: 'center',
+          position: 'absolute',
+          fontSize: '25px',
+          top: '20%',
+        }}
+      >
+        <p
+          style={{
+            fontWeight: 'bold',
+            fontSize: '60px',
+          }}
+        >
+          LOSE
+        </p>
+        <p>
+          With score {myScore} (you) vs score {otherPlayerScore}, you will be the second player next round
+        </p>
+      </div>
     );
   }
-  return <p>You draw with {myScore}, next round first start will be random</p>;
+  return (
+    <div
+      style={{
+        textAlign: 'center',
+        position: 'absolute',
+        fontSize: '25px',
+        top: '20%',
+      }}
+    >
+      <p
+        style={{
+          fontWeight: 'bold',
+          fontSize: '60px',
+        }}
+      >
+        You draw
+      </p>
+      <p>With score {myScore}, next round first start will be random</p>
+    </div>
+  );
 }
 
 export function Exit() {
@@ -30,9 +83,31 @@ export function Exit() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <Result />
-      <button onClick={onPlayAgain}>Play again</button>
+      <button
+        onClick={onPlayAgain}
+        style={{
+          width: '400px',
+          height: '80px',
+          borderRadius: '40px',
+          backgroundColor: 'lightblue',
+          fontWeight: 'bold',
+          fontSize: '40px',
+          position: 'absolute',
+          bottom: '40%',
+          left: '50%',
+          transform: 'translate(-50%, 0)',
+        }}
+      >
+        PLAY AGAIN
+      </button>
     </div>
   );
 }

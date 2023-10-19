@@ -46,6 +46,10 @@ io.on('connection', (socket) => {
     );
   });
 
+  socket.on('info', (done) => {
+    done(RoomService.getRooms());
+  });
+
   socket.on('register', (name, profilePicutre, done) => {
     try {
       PlayerService.registerPlayer(socket.id, name, profilePicutre);

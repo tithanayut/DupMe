@@ -37,6 +37,12 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    socket.emit('info', (rooms: Room[]) => {
+      setRooms(rooms);
+    });
+  }, []);
+
   return (
     <GameContext.Provider value={{ me, setMe, rooms, setRooms, myRoom, myPlayerIndex }}>
       {children}

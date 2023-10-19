@@ -11,7 +11,7 @@ export function ScoreBoard() {
     <div>
       <p>
         <img src={me?.profilePicture} width={100} />
-        Player 1: {me?.name} (You) | {myRoom?.score[myPlayerIndex]} (
+        Player 1: {me?.name} (You) | Score: {myRoom?.score[myPlayerIndex]} (
         <button
           onClick={() => {
             window.open(
@@ -27,7 +27,7 @@ export function ScoreBoard() {
       </p>
       <p>
         <img src={other?.profilePicture} width={100} />
-        Player 2: {other?.name} | {myRoom?.score[myPlayerIndex === 0 ? 1 : 0]}
+        Player 2: {other?.name} | Score: {myRoom?.score[myPlayerIndex === 0 ? 1 : 0]}
       </p>
     </div>
   );

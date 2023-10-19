@@ -87,10 +87,14 @@ export const RoomService = {
     rooms = [];
   },
   clearReadyState: (roomName: string) => {
-    const room = RoomService.getRoom(roomName);
-    room.ready[0] = false;
-    room.ready[1] = false;
-    io.emit('rooms', rooms);
+    try {
+      const room = RoomService.getRoom(roomName);
+      room.ready[0] = false;
+      room.ready[1] = false;
+      io.emit('rooms', rooms);
+    } catch {
+      console.log(`Room ${roomName} search failed, it may have been terminated`);
+    }
   },
 };
 
@@ -104,9 +108,14 @@ export const GameService = {
     KeyStoreService.clearGuessedKeys(roomName);
     io.emit('rooms', rooms);
 
-    TimerService.countDown(roomName, 10, () => {
-      GameService.transitionStateToGuess(roomName);
-    });
+    setTimeout(
+      () => {
+        TimerService.countDown(roomName, 10, () => {
+          GameService.transitionStateToGuess(roomName);
+        });
+      },
+      room.round === 1 ? 1200 : 0,
+    );
   },
   transitionStateToGuess(roomName: string) {
     let room: Room | null = null;
@@ -150,8 +159,6 @@ export const GameService = {
       nextRoundFirstPlayer = room.players[Math.random() < 0.5 ? 0 : 1]!;
       otherPlayer = room.players.find((player) => player?.socketId !== nextRoundFirstPlayer.socketId)!;
     }
-    console.log(room.score);
-    console.log(room.players);
 
     RoomService.terminateRoom(roomName);
     RoomService.createRoom(`${roomName} (2)`, room.level, nextRoundFirstPlayer.socketId, 0);
@@ -167,7 +174,9 @@ export const GameService = {
         const scoreToDecrease = KeyStoreService.getGuessedKeys(roomName).length - 1;
         KeyStoreService.clearGuessedKeys(roomName);
         ScoreService.decreaseScore(roomName, socketId, scoreToDecrease);
+        io.to(socketId).emit('wrong');
       }
+      io.emit('rooms', RoomService.getRooms());
     } else {
       KeyStoreService.appendKey(roomName, key);
     }

@@ -1,4 +1,4 @@
-import { RoomLevel } from '@dupme/shared-types';
+import { useEffect } from 'react';
 
 import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
@@ -40,10 +40,33 @@ function genRandomKey(length: number) {
 export function Game() {
   const { myRoom, myPlayerIndex } = useGame();
 
+  useEffect(() => {
+    MySwal.fire({
+      icon: 'info',
+      title: 'Welcome!',
+      timer: 1200,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+    });
+  }, []);
+
+  useEffect(() => {
+    const onWrong = () => {
+      MySwal.fire({
+        icon: 'error',
+        title: 'Wrong!',
+        timer: 600,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+      });
+    };
+    socket.on('wrong', onWrong);
+  }, []);
+
   const onKeyClick = (key: string) => {
     socket.emit('key', key);
   };
-  console.log(myRoom);
+
   if (myRoom?.ended) return <Exit />;
   if (!myRoom?.ready[0] || !myRoom?.ready[1]) return <Break />;
   return (
@@ -95,9 +118,11 @@ export function Game() {
         </button>
       )}
 
-      {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
-        <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
-      ))}
+      <div className="flex gap-4">
+        {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
+          <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
+        ))}
+      </div>
     </div>
   );
 }

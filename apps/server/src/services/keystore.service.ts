@@ -14,7 +14,6 @@ export const KeyStoreService = {
   appendGuessedKey: (roomName: string, key: string) => {
     const room = RoomService.getRoom(roomName);
     room.guessedKeys.push(key);
-    io.emit('rooms', RoomService.getRooms());
   },
   verifyGuessedKey: (roomName: string) => {
     const room = RoomService.getRoom(roomName);

@@ -1,0 +1,8 @@
+{
+	"appId": "com.thanayut.dupme",
+	"appName": "DupMe",
+	"webDir": "../server/dist/dist",
+	"server": {
+		"androidScheme": "https"
+	}
+}

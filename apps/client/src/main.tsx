@@ -7,7 +7,9 @@ import { GameContextProvider } from './contexts/GameContext';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <GameContextProvider>
-      <App />
+      <div className="pt-16">
+        <App />
+      </div>
     </GameContextProvider>
   </React.StrictMode>,
 );

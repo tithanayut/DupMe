@@ -12,20 +12,24 @@ export function Gate() {
   const { setMe } = useGame();
 
   useEffect(() => {
-    window.google.accounts.id.initialize({
-      client_id: '1082322066020-0a2irp5i8b0shiq0njm8ksd5h4qvt4a8.apps.googleusercontent.com',
-      callback: (response: any) => {
-        const user = JSON.parse(atob(response.credential.split('.')[1]));
-        onRegister(user.name, user.picture);
-      },
-    });
-    if (googleSignInRef.current) {
-      window.google.accounts.id.renderButton(googleSignInRef.current, {
-        type: 'standard',
-        theme: 'outline',
-        size: 'large',
-        width: 300,
+    try {
+      window.google.accounts.id.initialize({
+        client_id: '1082322066020-0a2irp5i8b0shiq0njm8ksd5h4qvt4a8.apps.googleusercontent.com',
+        callback: (response: any) => {
+          const user = JSON.parse(atob(response.credential.split('.')[1]));
+          onRegister(user.name, user.picture);
+        },
       });
+      if (googleSignInRef.current) {
+        window.google.accounts.id.renderButton(googleSignInRef.current, {
+          type: 'standard',
+          theme: 'outline',
+          size: 'large',
+          width: 300,
+        });
+      }
+    } catch {
+      console.log('Google Sign In not loaded');
     }
   }, []);
 

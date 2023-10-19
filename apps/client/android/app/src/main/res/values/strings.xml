@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DupMe</string>
+    <string name="title_activity_main">DupMe</string>
+    <string name="package_name">com.thanayut.dupme</string>
+    <string name="custom_url_scheme">com.thanayut.dupme</string>
+</resources>

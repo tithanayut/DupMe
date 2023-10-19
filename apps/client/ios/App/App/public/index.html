@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>DupMe</title>
+    <link rel="icon" type="image/png" href="/assets/piano-icon.png" />
+    <script src="https://accounts.google.com/gsi/client"></script>
+    <script type="module" crossorigin src="/assets/index-8597e778.js"></script>
+    <link rel="stylesheet" href="/assets/index-69c6bd49.css">
+  </head>
+  <body>
+    <div id="bgmusic" class="mr-10">
+      <audio id="song" src="/assets/song.mp3" type="audio/mpeg"></audio>
+      <button onclick="togleAudio()" class="top-36 transparent-button">🔇</button>
+
+      <script>
+        var audio = false;
+        var sound = document.getElementById('song');
+        // Button click function
+        function togleAudio() {
+          if (audio == true) {
+            sound.pause();
+            audio = false;
+            document.querySelector('button').textContent = '🔇';
+          } else if (audio == false) {
+            audio = true;
+            sound.play();
+            document.querySelector('button').textContent = '🔊';
+          }
+        }
+      </script>
+    </div>
+    <button id="dark-mode-toggle-button" class="top-20 transparent-button">🌓</button>
+    <button class="top-4 transparent-button">❓</button>
+
+    <!-- React Root -->
+    <div id="root"></div>
+
+    
+    
+  </body>
+</html>

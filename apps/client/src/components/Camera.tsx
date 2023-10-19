@@ -22,6 +22,7 @@ export function Camera({ onCapture }: CameraProps) {
             backgroundColor: 'lightgrey',
             borderRadius: '8px',
             width: '140px',
+            color: 'black',
           }}
           onClick={async () => {
             if (!videoRef.current) return;
@@ -43,6 +44,7 @@ export function Camera({ onCapture }: CameraProps) {
             backgroundColor: 'lightgrey',
             borderRadius: '8px',
             width: '140px',
+            color: 'black',
           }}
           onClick={() => {
             if (!canvasRef.current || !videoRef.current || !stream.current) return;

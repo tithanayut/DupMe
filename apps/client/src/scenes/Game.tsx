@@ -37,6 +37,13 @@ function genRandomKey(length: number) {
   return result;
 }
 
+function playPianoSound(note: string) {
+  const audioElement = document.getElementById(`note${note}`);
+  if (audioElement) {
+    (audioElement as HTMLAudioElement).play();
+  }
+}
+
 export function Game() {
   const { myRoom, myPlayerIndex } = useGame();
 
@@ -64,6 +71,7 @@ export function Game() {
   }, []);
 
   const onKeyClick = (key: string) => {
+    playPianoSound(key);
     socket.emit('key', key);
   };
 

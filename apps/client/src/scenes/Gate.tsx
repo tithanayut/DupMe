@@ -8,7 +8,7 @@ import { useGame } from '../contexts/GameContext';
 export function Gate() {
   const nameRef = useRef<HTMLInputElement>(null);
   const googleSignInRef = useRef<HTMLDivElement>(null);
-  const [profilePicture, setProfilePicture] = useState('/assets/Profile1.jpg');
+  const [profilePicture, setProfilePicture] = useState('/assets/Profile1.png');
   const { setMe } = useGame();
 
   useEffect(() => {

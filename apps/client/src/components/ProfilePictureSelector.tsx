@@ -8,10 +8,10 @@ interface ProfilePictureSelectorProps {
 }
 export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelectorProps) {
   const [options, setOptions] = useState([
-    '/assets/Profile1.jpg',
-    '/assets/Profile2.jpg',
-    '/assets/Profile3.jpg',
-    '/assets/Profile4.jpg',
+    '/assets/Profile1.png',
+    '/assets/Profile2.png',
+    '/assets/Profile3.png',
+    '/assets/Profile4.png',
   ]);
 
   return (

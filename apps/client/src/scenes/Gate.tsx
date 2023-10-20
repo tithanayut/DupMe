@@ -119,6 +119,14 @@ export function Gate() {
           ENTER
         </button>
       </form>
+      <img
+        src="/assets/pianoGate.png"
+        style={{
+          position: 'absolute',
+          bottom: '-15%',
+          display: 'flex',
+        }}
+      />
     </div>
   );
 }

@@ -45,7 +45,7 @@ function playPianoSound(note: string) {
 }
 
 export function Game() {
-  const { myRoom, myPlayerIndex } = useGame();
+  const { myRoom, myPlayerIndex, paused, setPaused } = useGame();
 
   useEffect(() => {
     MySwal.fire({
@@ -105,6 +105,7 @@ export function Game() {
           Random🎲
         </button>
       )}
+      <button onClick={() => setPaused(!paused)}>{paused ? 'Resume' : 'Pause'}</button>
 
       {myRoom?.turn === myPlayerIndex && myRoom.state === 'guessing' && (
         <button
@@ -128,7 +129,12 @@ export function Game() {
 
       <div className="flex gap-4">
         {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
-          <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
+          <KeyButton
+            key={key}
+            code={key}
+            onClick={() => onKeyClick(key)}
+            disabled={paused || myRoom.turn !== myPlayerIndex}
+          />
         ))}
       </div>
     </div>

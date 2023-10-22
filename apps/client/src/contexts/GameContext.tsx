@@ -11,6 +11,8 @@ interface GameContextType {
   myRoom: Room | null;
   myPlayerIndex: number;
   setRooms: (rooms: Room[]) => void;
+  paused: boolean;
+  setPaused: (paused: boolean) => void;
 }
 
 const GameContext = createContext<GameContextType>({} as GameContextType);
@@ -20,7 +22,7 @@ export const useGame = () => useContext(GameContext);
 export function GameContextProvider({ children }: { children: ReactNode }) {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [me, setMe] = useState<Me | null>(null);
-
+  const [paused, setPaused] = useState(false);
   const { myRoom, myPlayerIndex } = useMemo(() => {
     const myRoom =
       rooms.find((room) => room.players[0].socketId === socket.id || room.players[1]?.socketId === socket.id) ?? null;
@@ -60,7 +62,7 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <GameContext.Provider value={{ me, setMe, rooms, setRooms, myRoom, myPlayerIndex }}>
+    <GameContext.Provider value={{ me, setMe, rooms, setRooms, myRoom, myPlayerIndex, paused, setPaused }}>
       {children}
     </GameContext.Provider>
   );

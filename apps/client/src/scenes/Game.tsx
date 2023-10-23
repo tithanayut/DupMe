@@ -16,11 +16,11 @@ function GameState() {
   const isTurn = myRoom?.turn === myPlayerIndex;
 
   if (isTurn) {
-    return <p>It is your turn! {myRoom.state === 'guessing' && 'Guess Now'}</p>;
+    return <p className="">It is your turn! {myRoom.state === 'guessing' && 'Guess Now'}</p>;
   }
   const otherPlayer = myRoom?.players[myPlayerIndex === 1 ? 0 : 1];
   return (
-    <p>
+    <p className="">
       {otherPlayer?.name} is {myRoom?.state === 'guessing' ? 'guessing...' : 'showing you the pattern'}
     </p>
   );
@@ -79,23 +79,24 @@ export function Game() {
   if (!myRoom?.ready[0] || !myRoom?.ready[1]) return <Break />;
   return (
     <div>
-      <GameState />
+      <div className="w-fit mx-auto flex justify-center bg-yellow-200 text-cyan-800 font-bold text-2xl py-2 px-6 rounded-full mt-10">
+        <GameState />
+      </div>
       <ScoreBoard />
       <Timer />
       <KeyStroke />
 
+      <div className="flex gap-4">
+        {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
+          <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
+        ))}
+      </div>
+
       {myRoom?.turn == myPlayerIndex && myRoom.state == 'showing' && (
         <button
+          className=" mx-auto flex justify-center bg-cyan-500 hover:bg-cyan-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10 mb-10"
           onClick={() => {
             var random = genRandomKey(myRoom.keycount);
-
-            // if (myRoom.level == RoomLevel.LV1) {
-            //   var random = genRandomKey(5);
-            // } else if (myRoom.level == RoomLevel.LV2) {
-            //   var random = genRandomKey(6);
-            // } else if (myRoom.level == RoomLevel.LV3) {
-            //   var random = genRandomKey(7); //myRoom.keycount
-            // } else var random = genRandomKey(5);
 
             for (const r of random) {
               onKeyClick(r);
@@ -108,6 +109,7 @@ export function Game() {
 
       {myRoom?.turn === myPlayerIndex && myRoom.state === 'guessing' && (
         <button
+          className=" mx-auto flex justify-center bg-pink-500 hover:bg-pink-700 text-white text-5xl font-bold rounded-full py-3 px-6 mt-10 mb-10"
           onClick={() => {
             if (myRoom.keys.length != myRoom.guessedKeys.length) {
               MySwal.fire({
@@ -125,12 +127,6 @@ export function Game() {
           Hint💡
         </button>
       )}
-
-      <div className="flex gap-4">
-        {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
-          <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
-        ))}
-      </div>
     </div>
   );
 }

@@ -8,16 +8,16 @@ export function ScoreBoard() {
   const other = myRoom?.players[myPlayerIndex === 0 ? 1 : 0];
 
   return (
-    <div className="flex mt-6 space-x-96">
+    <div className="flex justify-center  space-x-96">
       <div className="ml-10">
         <p>
           <img src={me?.profilePicture} width={100} className="" />
-          <p>
+          <p className="-ml-10">
             Player 1: {me?.name} (You) | Score: {myRoom?.score[myPlayerIndex]}
           </p>{' '}
           <p>
             <button
-              className="mt-4 -ml-5 bg-amber-200 hover:bg-cyan-500 text-rose-500 text-2xl font-bold rounded-full py-2 px-4"
+              className="mt-4 -ml-20 bg-amber-200 hover:bg-cyan-500 text-rose-500 text-2xl font-bold rounded-full py-2 px-4"
               onClick={() => {
                 window.open(
                   import.meta.env.MODE === 'development'

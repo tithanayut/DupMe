@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/assets/index-1be0fb7a.js"></script>
-    <link rel="stylesheet" href="/assets/index-8f74cfde.css">
+    <script type="module" crossorigin src="/assets/index-c1f121af.js"></script>
+    <link rel="stylesheet" href="/assets/index-c76c1aba.css">
   </head>
   <body>
     <div id="bgmusic" class="mr-10">
@@ -36,7 +36,15 @@
       </script>
     </div>
     <button id="dark-mode-toggle-button" class="top-20 transparent-button">🌓</button>
-    <button class="top-4 transparent-button">❓</button>
+    <button class="top-4 transparent-button" onclick="infoPopUp()">❓</button>
+
+    <script>
+      function infoPopUp() {
+        alert(
+          'DupMe is a multiplayer piano game. You can play with your friends or with random people. You can also create your own room and invite your friends to play with you. Have fun!',
+        );
+      }
+    </script>
 
     <!-- React Root -->
     <div id="root"></div>

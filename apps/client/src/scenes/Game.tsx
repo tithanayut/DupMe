@@ -116,13 +116,11 @@ export function Game() {
             ></button>
           )}
 
-          {(myRoom?.level === 'LV2' || myRoom?.level === 'LV3') && (
-            <button
-              className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
-              style={{ marginLeft: '-428px' }}
-              disabled={myRoom.turn !== myPlayerIndex}
-            ></button>
-          )}
+          <button
+            className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+            style={{ marginLeft: '-428px' }}
+            disabled={myRoom.turn !== myPlayerIndex}
+          ></button>
 
           <button
             className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"

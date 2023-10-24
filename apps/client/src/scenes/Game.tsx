@@ -78,12 +78,15 @@ export function Game() {
 
   if (myRoom?.ended) return <Exit />;
   if (!myRoom?.ready[0] || !myRoom?.ready[1]) return <Break />;
+  // if (myRoom?.level === 'LV1')
   return (
     <div>
       <div className="w-fit mx-auto flex justify-center bg-yellow-200 text-cyan-800 font-bold text-2xl py-2 px-6 rounded-full mt-5">
         <GameState />
       </div>
+
       <ScoreBoard />
+
       <div className="w-fit mx-auto flex justify-center mt-5 text-2xl">
         <KeyStroke />
       </div>
@@ -95,22 +98,46 @@ export function Game() {
             <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
           ))}
         </div>
+
         <div className="z-20 flex">
-          <button
-            className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
-            style={{ marginLeft: '-430px' }}
-          ></button>
+          {myRoom?.level === 'LV3' && (
+            <button
+              className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+              style={{ marginLeft: '-633px' }}
+              disabled={myRoom.turn !== myPlayerIndex}
+            ></button>
+          )}
+
+          {(myRoom?.level === 'LV2' || myRoom?.level === 'LV3') && (
+            <button
+              className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+              style={{ marginLeft: '-530px' }}
+              disabled={myRoom.turn !== myPlayerIndex}
+            ></button>
+          )}
+
+          {(myRoom?.level === 'LV2' || myRoom?.level === 'LV3') && (
+            <button
+              className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+              style={{ marginLeft: '-428px' }}
+              disabled={myRoom.turn !== myPlayerIndex}
+            ></button>
+          )}
+
           <button
             className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
             style={{ marginLeft: '-328px' }}
+            disabled={myRoom.turn !== myPlayerIndex}
           ></button>
           <button
             className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
             style={{ marginLeft: '-227px' }}
+            disabled={myRoom.turn !== myPlayerIndex}
           ></button>
           <button
             className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
             style={{ marginLeft: '-125px' }}
+            disabled={myRoom.turn !== myPlayerIndex}
           ></button>
         </div>
       </div>

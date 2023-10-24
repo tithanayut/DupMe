@@ -9,6 +9,7 @@ import { Timer } from '../components/Timer';
 import { useGame } from '../contexts/GameContext';
 import { Break } from './Break';
 import { Exit } from './Exit';
+//import { RoomLevel } from '@dupme/shared-types';
 
 function GameState() {
   const { myRoom, myPlayerIndex } = useGame();
@@ -79,19 +80,44 @@ export function Game() {
   if (!myRoom?.ready[0] || !myRoom?.ready[1]) return <Break />;
   return (
     <div>
-      <div className="w-fit mx-auto flex justify-center bg-yellow-200 text-cyan-800 font-bold text-2xl py-2 px-6 rounded-full mt-10">
+      <div className="w-fit mx-auto flex justify-center bg-yellow-200 text-cyan-800 font-bold text-2xl py-2 px-6 rounded-full mt-5">
         <GameState />
       </div>
       <ScoreBoard />
-      <Timer />
-      <KeyStroke />
-
-      <div className="flex gap-4">
-        {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
-          <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
-        ))}
+      <div className="w-fit mx-auto flex justify-center mt-5 text-2xl">
+        <KeyStroke />
       </div>
 
+      {/* flex gap-4 w-fit mx-auto justify-center mt-6 */}
+      <div className="flex w-fit mx-auto relative justify-center mt-6">
+        <div className="z-10">
+          {Array.from({ length: myRoom?.keycount ?? 5 }, (_, i) => String.fromCharCode(65 + i)).map((key) => (
+            <KeyButton key={key} code={key} onClick={() => onKeyClick(key)} disabled={myRoom.turn !== myPlayerIndex} />
+          ))}
+        </div>
+        <div className="z-20 flex">
+          <button
+            className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+            style={{ marginLeft: '-430px' }}
+          ></button>
+          <button
+            className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+            style={{ marginLeft: '-328px' }}
+          ></button>
+          <button
+            className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+            style={{ marginLeft: '-227px' }}
+          ></button>
+          <button
+            className="absolute bg-gray-900 disabled:bg-gray-400 px-6 py-16  rounded-md rounded-t-none"
+            style={{ marginLeft: '-125px' }}
+          ></button>
+        </div>
+      </div>
+
+      <div className="w-fit mx-auto flex justify-center text-gray-700 font-bold text-3xl mt-10">
+        <Timer />
+      </div>
       {myRoom?.turn == myPlayerIndex && myRoom.state == 'showing' && (
         <button
           className=" mx-auto flex justify-center bg-cyan-500 hover:bg-cyan-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10 mb-10"

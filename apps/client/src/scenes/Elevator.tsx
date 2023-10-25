@@ -19,15 +19,43 @@ export function Elevator() {
     // <div style={{ backgroundImage: 'url(/break.png)' }}>
     <div className="bg-rose-200 w-screen h-screen">
       <img src="/assets/piano.png" />
+
       <div className=" mt-10">
-        <p className="w-fit mx-auto ">
-          <span className="flex justify-center bg-blue-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
-            <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
-              {myRoom?.level}
-            </span>{' '}
-            : <span className="ml-2">{myRoom?.name}</span>
-          </span>
-        </p>
+        <div>
+          {myRoom?.level === 'LV1' && (
+            <p className="w-fit mx-auto ">
+              <span className="flex justify-center bg-green-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
+                <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
+                  {myRoom?.level}
+                </span>{' '}
+                : <span className="ml-2">{myRoom?.name}</span>
+              </span>
+            </p>
+          )}
+
+          {myRoom?.level === 'LV2' && (
+            <p className="w-fit mx-auto ">
+              <span className="flex justify-center bg-orange-400 text-white font-bold py-2 px-6 rounded-full text-2xl">
+                <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
+                  {myRoom?.level}
+                </span>{' '}
+                : <span className="ml-2">{myRoom?.name}</span>
+              </span>
+            </p>
+          )}
+
+          {myRoom?.level === 'LV3' && (
+            <p className="w-fit mx-auto ">
+              <span className="flex justify-center bg-red-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
+                <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
+                  {myRoom?.level}
+                </span>{' '}
+                : <span className="ml-2">{myRoom?.name}</span>
+              </span>
+            </p>
+          )}
+        </div>
+
         <p className="text-center mx-auto flex justify-center text-6xl mt-10">
           Other player is {myRoom?.ready[otherPlayerIndex] ? 'Ready' : 'Not Ready'}
         </p>

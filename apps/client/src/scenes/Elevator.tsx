@@ -1,12 +1,19 @@
+import { useState } from 'react';
+
 import { socket } from '../common/socket';
 import { useGame } from '../contexts/GameContext';
+
 //import piano from "./../assets/piano.png";
 
 export function Elevator() {
   const { myRoom, myPlayerIndex } = useGame();
+  //const [buttonLabel, setButtonLabel] = useState('Ready');
+  //const [buttonColor, setButtonColor] = useState('red');
 
   const onClickReady = () => {
     socket.emit('ready');
+    //setButtonLabel('Yes');
+    //setButtonColor('grey');
   };
   // const myStyle = {
   //   backgroundImage:
@@ -59,6 +66,8 @@ export function Elevator() {
         <p className="text-center mx-auto flex justify-center text-6xl mt-10">
           Other player is {myRoom?.ready[otherPlayerIndex] ? 'Ready' : 'Not Ready'}
         </p>
+
+        <img src="/assets/hihi.png" className="flex left-[18%] bottom-0 absolute w-1/4 h-2/6" />
 
         <p className="max-w-2xl mx-auto flex justify-center text-2xl mt-10 ">Are you ready?</p>
         <div className="max-w-[15%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">

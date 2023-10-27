@@ -120,7 +120,7 @@ export function Gate() {
         </button>
       </form>
       <img
-        src="/assets/pianoGate.png"
+        src="/assets/pianoGate.gif"
         style={{
           position: 'absolute',
           bottom: '-15%',

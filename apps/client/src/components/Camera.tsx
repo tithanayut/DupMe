@@ -66,7 +66,7 @@ export function Camera({ onCapture }: CameraProps) {
       )}
       <video
         ref={videoRef}
-        width="200px"
+        width="300px"
         autoPlay
         style={{
           display: cameraActive ? 'block' : 'none',

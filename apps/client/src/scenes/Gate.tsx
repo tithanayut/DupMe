@@ -48,7 +48,7 @@ export function Gate() {
       <p
         style={{
           position: 'absolute',
-          top: '5%',
+          top: '3%',
           left: '50%',
           transform: 'translate(-50%, 0)',
           fontSize: '12px',

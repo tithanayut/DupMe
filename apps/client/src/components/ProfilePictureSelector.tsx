@@ -8,10 +8,10 @@ interface ProfilePictureSelectorProps {
 }
 export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelectorProps) {
   const [options, setOptions] = useState([
-    '/assets/Profile1.png',
-    '/assets/Profile2.png',
-    '/assets/Profile3.png',
-    '/assets/Profile4.png',
+    'https://dupme.up.railway.app/assets/Profile1.png',
+    'https://dupme.up.railway.app/assets/Profile2.png',
+    'https://dupme.up.railway.app/assets/Profile3.png',
+    'https://dupme.up.railway.app/assets/Profile4.png',
   ]);
 
   return (

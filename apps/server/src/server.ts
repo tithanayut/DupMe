@@ -23,7 +23,8 @@ export const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 app.use('/', express.static(path.resolve(__dirname, './dist')));
-app.use('/admin', express.static(path.resolve(__dirname, './node_modules/@socket.io/admin-ui/ui/dist')));
+app.use('/console', express.static(path.resolve(__dirname, '../node_modules/@socket.io/admin-ui/ui/dist')));
+app.use('/admin', express.static(path.resolve(__dirname, './public')));
 
 MonitoringService.setupServerResetListener();
 
@@ -105,13 +106,21 @@ io.on('connection', (socket) => {
   socket.on('msg', (message) => {
     io.emit('msg', PlayerService.getPlayer(socket.id).name + ' : ' + message);
   });
+
+  socket.on('reset', (done) => {
+    MonitoringService.reinitializeServer();
+    MonitoringService.reportConcurrentClients();
+    done(true);
+  });
 });
 
 /* One of computer has server program and also game client. */
 /* Another computer has only game client that will directly connect to server. */
 /* Server’s IP and port will be set in your program’s source code. */
 server.listen(PORT, () => {
-  console.log(`🚀 DupMe is listening on port ${PORT} (Server: http://localhost:${PORT})`);
-  console.log('Possible server IP:', myip.getLocalIP4());
+  const serverIp = myip.getLocalIP4();
+  console.log(`🚀 DupMe is listening on port ${PORT}`);
+  console.log('Server IP:', serverIp);
+  console.log(`Admin Console: http://${serverIp}:${PORT}/admin`);
   console.log('Press / to reset');
 });

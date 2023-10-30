@@ -16,10 +16,14 @@ export const MonitoringService = {
         .map((player) => player.name)
         .join(', ')}`,
     );
+    io.emit('concurrent', io.engine.clientsCount, PlayerService.getPlayerCount(), PlayerService.getPlayers());
   },
   reinitializeServer: () => {
+    console.info(`Game reset on ${new Date().toLocaleString()}`);
+
     PlayerService.resetPlayers();
     RoomService.resetRooms();
+
     io.emit('reset');
   },
   /* Server has a reset button to reset player’s scores and current game. */
@@ -33,7 +37,6 @@ export const MonitoringService = {
             debounced = false;
           }, 30);
 
-          console.info(`Game reset on ${new Date().toLocaleString()}`);
           MonitoringService.reinitializeServer();
           MonitoringService.reportConcurrentClients();
         }

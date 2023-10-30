@@ -11,6 +11,9 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
+  globals: {
+    io: true,
+  },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   rules: {
     'no-unused-vars': 'warn',

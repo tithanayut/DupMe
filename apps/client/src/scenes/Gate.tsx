@@ -36,7 +36,7 @@ export function Gate() {
   const onRegister = (name: string, profilePicture: string) => {
     socket.emit('register', name, profilePicture, (success: boolean, error: string) => {
       if (success) {
-        setMe({ name, profilePicture });
+        setMe({ socketId: socket.id, name, profilePicture });
       } else {
         alert(error);
       }

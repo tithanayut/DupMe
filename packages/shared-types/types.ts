@@ -33,3 +33,10 @@ export interface Player {
   profilePicture: string;
   accumulatedScore: number;
 }
+
+export interface ChatMessage {
+  socketId: string;
+  name: String;
+  message: string;
+  profilePicture: string;
+}

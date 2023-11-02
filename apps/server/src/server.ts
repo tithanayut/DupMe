@@ -1,5 +1,6 @@
 import { createServer } from 'node:http';
 
+import { ChatMessage } from '@dupme/shared-types';
 import { instrument } from '@socket.io/admin-ui';
 import cors from 'cors';
 import express from 'express';
@@ -104,7 +105,14 @@ io.on('connection', (socket) => {
   });
 
   socket.on('msg', (message) => {
-    io.emit('msg', PlayerService.getPlayer(socket.id).name + ' : ' + message);
+    const player = PlayerService.getPlayer(socket.id);
+    const chatMessage: ChatMessage = {
+      name: player.name,
+      message,
+      socketId: socket.id,
+      profilePicture: player.profilePicture,
+    };
+    io.emit('msg', chatMessage);
   });
 
   socket.on('reset', (done) => {

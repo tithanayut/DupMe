@@ -3,6 +3,7 @@ import { FormEvent, useRef } from 'react';
 import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
 import { Chatbox } from '../components/Chatbox';
+import { Leaderboard } from '../components/Leaderboard';
 import { useGame } from '../contexts/GameContext';
 
 export function Lobby() {
@@ -138,7 +139,7 @@ export function Lobby() {
               <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white flex flex-col mt-6 rounded-[30px] md:w-4/5 w-full">
                 <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)_inset] bg-amber-500 self-stretch flex flex-col pt-9 rounded-[30px] max-md:max-w-full">
                   <div className="bg-amber-500 self-stretch flex grow pt-0 flex-col  px-5">
-                    <div className="self-center mt-[-4px]  z-[1] flex ml-0 max-w-full items-start gap-3.5 pb-3">
+                    <div className="self-center mt-[-4px] z-[1] flex ml-0 items-start gap-3.5 pb-3">
                       <img
                         loading="lazy"
                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/8948cf76-79ef-4eac-9e1d-7a006dceef13?"
@@ -150,23 +151,7 @@ export function Lobby() {
                     </div>
                   </div>
                 </div>
-                <img
-                  loading="lazy"
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/e28c982e-4d04-438e-8a94-7370ccf67fc4?"
-                  className="aspect-square object-cover object-center w-[70px] overflow-hidden self-center max-w-full mt-7"
-                />
-                <div className="self-center flex max-w-full items-start justify-between gap-5 mt-11 max-md:mt-10">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/52eb64c8-8a84-4bbf-abf4-65944cdcecab?"
-                    className="aspect-square object-cover object-center w-[70px] overflow-hidden flex-1 mt-2"
-                  />
-                  <img
-                    loading="lazy"
-                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/feb88e70-66fb-4385-94f6-c4cbe89fa0d7?"
-                    className="aspect-square object-cover object-center w-[70px] overflow-hidden flex-1"
-                  />
-                </div>
+                <Leaderboard />
               </div>
               <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white self-stretch flex grow flex-col w-full md:w-4/5 mt-10 justify-between rounded-[30px]">
                 <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-sky-700 text-center flex flex-col  py-4 rounded-t-[30px] max-md:max-w-full">

@@ -59,6 +59,20 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    const secretTextWon = () => {
+      MySwal.fire({
+        icon: 'warning',
+        title: 'Sorry!',
+        text: 'The secret key has been used',
+      });
+    };
+    socket.on('wonBySecret', secretTextWon);
+    return () => {
+      socket.off('wonBySecret', secretTextWon);
+    };
+  }, []);
+
   return (
     <GameContext.Provider value={{ me, setMe, rooms, setRooms, myRoom, myPlayerIndex }}>
       {children}

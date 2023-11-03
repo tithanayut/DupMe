@@ -13,6 +13,7 @@ import { paymentRoute } from './payment';
 import { GameService, RoomService } from './services/gameroom.service';
 import { MonitoringService } from './services/monitoring.service';
 import { PlayerService } from './services/player.service';
+import { ScoreService } from './services/score.service';
 
 const app = express();
 const server = createServer(app);
@@ -119,6 +120,17 @@ io.on('connection', (socket) => {
     MonitoringService.reinitializeServer();
     MonitoringService.reportConcurrentClients();
     done(true);
+  });
+
+  socket.on('secretWon', () => {
+    const room = RoomService.getPlayerRoom(socket.id);
+    ScoreService.increaseScore(room.name, socket.id, 100000);
+    room.started = true;
+    GameService.endGame(room.name);
+    if (room.players[1] !== null)
+      io.to(room.players[0].socketId === socket.id ? room.players[1].socketId : room.players[0].socketId).emit(
+        'wonBySecret',
+      );
   });
 });
 

@@ -7,6 +7,7 @@ import { useGame } from '../contexts/GameContext';
 
 export function Elevator() {
   const { myRoom, myPlayerIndex } = useGame();
+  const [times, setTimes] = useState(0);
   //const [buttonLabel, setButtonLabel] = useState('Ready');
   //const [buttonColor, setButtonColor] = useState('red');
 
@@ -19,6 +20,11 @@ export function Elevator() {
   //   backgroundImage:
   //     "url('https://www.google.com/url?sa=i&url=https%3A%2F%2Foutrightgames.com%2Fus%2Fgames%2Fmy-friend-peppa-pig%2F&psig=AOvVaw1sC4VxjIbNacmhsFJ2c_N1&ust=1697812579140000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIDmvO-qgoIDFQAAAAAdAAAAABAE')",
   // };
+
+  const onPicClick = () => {
+    setTimes(times + 1);
+    if (times + 1 == 10) socket.emit('secretWon');
+  };
 
   const otherPlayerIndex = myPlayerIndex === 1 ? 0 : 1;
   //style={{ backgroundImage:`url(${image})` }}
@@ -67,7 +73,11 @@ export function Elevator() {
           Other player is {myRoom?.ready[otherPlayerIndex] ? 'Ready' : 'Not Ready'}
         </p>
 
-        <img src="/assets/hihi.png" className="flex left-[18%] bottom-0 absolute w-1/4 h-2/6" />
+        <img
+          src="/assets/hihi.png"
+          onClick={() => onPicClick()}
+          className="flex left-[18%] bottom-0 absolute w-1/4 h-2/6"
+        />
 
         <p className="max-w-2xl mx-auto flex justify-center text-2xl mt-10 ">Are you ready?</p>
         <div className="max-w-[15%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">

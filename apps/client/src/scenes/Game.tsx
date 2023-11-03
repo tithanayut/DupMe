@@ -49,6 +49,7 @@ export function Game() {
   const { myRoom, myPlayerIndex } = useGame();
 
   useEffect(() => {
+    if (myRoom?.ended) return;
     MySwal.fire({
       icon: 'info',
       title: 'Welcome!',

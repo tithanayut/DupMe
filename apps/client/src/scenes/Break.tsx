@@ -13,6 +13,7 @@ export function Break() {
   return (
     <div className="bg-lime-100 w-screen h-screen relative">
       <img src="/assets/piano.png" />
+
       <div className="mt-36 ">
         <p className="mx-auto flex justify-center text-3xl ">Are you ready for the next round?</p>
         <p className="mx-auto flex justify-center text-6xl mt-5">
@@ -22,7 +23,7 @@ export function Break() {
         <div className="max-w-[15%] mx-auto  flex justify-center bg-green-400 hover:bg-green-600 text-white text-6xl font-bold rounded-full py-4 px-8 mt-10">
           <button onClick={onClickReady}>Yes</button>
         </div>
-        <img src="/assets/hihi2.png" className="absolute -mt-16 right-[20%] bottom-0 w-1/4 h-2/6" />
+        <img src="/assets/hihi2.png" className="absolute right-[20%] bottom-0 w-1/4 h-2/6" />
       </div>
     </div>
   );

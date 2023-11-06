@@ -46,17 +46,22 @@ export function Lobby() {
   };
 
   return (
-    <div className="bg-orange-100 flex flex-col min-h-screen">
-      <div className="self-center w-full max-w-[1351px] mt-3.5 max-md:max-w-full">
+    <div className="bg-sky-200 flex flex-col min-h-screen">
+      <img src="/assets/lobblycurtain.png" className="z-10 absolute w-screen top-0" />
+      <img src="/assets/lobbyfloor2.png" className="z-10 absolute w-screen bottom-0" />
+
+      <div className="z-20 self-center w-full max-w-[1351px] mt-3.5 max-md:max-w-full">
         <div className="gap-5 flex flex-col md:flex-row mr-14 ml-14 md:m-0">
           <div className="flex flex-col items-stretch w-full max-md:ml-0">
             <div className="flex flex-col max-md:max-w-full max-md:mt-10 grow">
               <a href="/" className="flex items-center gap-3 font-bold mx-[-40px]">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/15ba4eec-a988-4c4e-9aa8-523ef2b57569?"
-                  className="aspect-square object-cover object-center w-[40px] ml-4 overflow-hidden max-w-full self-start"
+                  src="/assets/home.png"
+                  className="hover:scale-125 aspect-square object-cover object-center w-[40px] ml-4 overflow-hidden max-w-full self-start"
                 />
-                Welcome {me?.name}!
+                <p className="bg-green-200 text-amber-950 shadow-xl font-bold py-1 px-4 rounded-full text-xl">
+                  Welcome {me?.name}!
+                </p>
               </a>
               <div className="mt-6 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white min-h-[300px] flex grow flex-col pt-9 rounded-[30px] self-end w-full md:w-4/5 justify-start items-center">
                 <div className="self-center flex  max-w-full flex-col w-full justify-between items-center grow">

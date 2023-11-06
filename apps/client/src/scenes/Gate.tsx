@@ -44,89 +44,95 @@ export function Gate() {
   };
 
   return (
-    <div style={{ textAlign: 'center' }}>
-      <p
-        style={{
-          position: 'absolute',
-          top: '3%',
-          left: '50%',
-          transform: 'translate(-50%, 0)',
-          fontSize: '12px',
-        }}
-      >
-        Select your profile picture
-      </p>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
-        </div>
-        <input
-          style={{
-            position: 'absolute',
-            bottom: '35%',
-            left: '50%',
-            transform: 'translate(-50%, 0)',
-            textAlign: 'center',
-            border: '2px solid darkgrey',
-            borderRadius: '20px',
-            color: 'black',
-          }}
-          type="text"
-          placeholder="Your Name"
-          ref={nameRef}
-        />
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <div
+    <div>
+      <img src="/assets/curtainL.png" className="z-20 absolute h-screen left-0" />
+      <img src="/assets/curtainR.png" className="z-20 absolute h-screen right-0" />
+      <div className="z-10">
+        <div style={{ textAlign: 'center' }}>
+          <p
             style={{
               position: 'absolute',
-              bottom: '25%',
+              top: '3%',
               left: '50%',
               transform: 'translate(-50%, 0)',
+              fontSize: '18px',
             }}
-            ref={googleSignInRef}
-          ></div>
+          >
+            Select your profile picture
+          </p>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
+            </div>
+            <input
+              style={{
+                position: 'absolute',
+                bottom: '35%',
+                left: '50%',
+                transform: 'translate(-50%, 0)',
+                textAlign: 'center',
+                border: '2px solid darkgrey',
+                borderRadius: '20px',
+                color: 'black',
+              }}
+              type="text"
+              placeholder="Your Name"
+              ref={nameRef}
+            />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '25%',
+                  left: '50%',
+                  transform: 'translate(-50%, 0)',
+                }}
+                ref={googleSignInRef}
+              ></div>
+            </div>
+            <button
+              className="enter-btn"
+              onClick={() => {
+                if (!nameRef.current || nameRef.current.value === '') {
+                  MySwal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Name cannot be blank!',
+                  });
+                  return;
+                }
+                onRegister(nameRef.current?.value, profilePicture);
+              }}
+            >
+              ENTER
+            </button>
+          </form>
+          <img
+            src="/assets/pianoGate.gif"
+            style={{
+              position: 'absolute',
+              bottom: '-15%',
+              display: 'flex',
+            }}
+          />
         </div>
-        <button
-          className="enter-btn"
-          onClick={() => {
-            if (!nameRef.current || nameRef.current.value === '') {
-              MySwal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Name cannot be blank!',
-              });
-              return;
-            }
-            onRegister(nameRef.current?.value, profilePicture);
-          }}
-        >
-          ENTER
-        </button>
-      </form>
-      <img
-        src="/assets/pianoGate.gif"
-        style={{
-          position: 'absolute',
-          bottom: '-15%',
-          display: 'flex',
-        }}
-      />
+      </div>
     </div>
   );
 }

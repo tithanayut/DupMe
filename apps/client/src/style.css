@@ -74,6 +74,7 @@ body {
   font-size: 30px;
   position: absolute;
   right: 10px;
+  z-index: 1000;
 }
 
 .enter-btn {

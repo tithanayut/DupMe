@@ -8,7 +8,7 @@ export function ScoreBoard() {
   const other = myRoom?.players[myPlayerIndex === 0 ? 1 : 0];
 
   return (
-    <div className="flex justify-center  space-x-96">
+    <div className="flex justify-center  space-x-[40%]">
       <div className="ml-10">
         <p>
           <img src={me?.profilePicture} width={100} className="" />

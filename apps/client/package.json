@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --host 0.0.0.0",
-    "build": "vite build"
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@capacitor/android": "^5.5.0",

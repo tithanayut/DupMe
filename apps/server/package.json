@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "dev": "tsnd --respawn ./src/server.ts",
-    "build": "tsc && cp -r ./src/public ./dist"
+    "build": "tsc && cp -r ./src/public ./dist",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@socket.io/admin-ui": "^0.5.1",

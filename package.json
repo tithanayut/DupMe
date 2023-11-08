@@ -6,6 +6,7 @@
     "dev:client": "pnpm --filter client dev",
     "dev:server": "pnpm --filter server dev",
     "build": "pnpm --filter client --filter server --filter @dupme/* build",
+    "typecheck": "pnpm --filter client --filter server typecheck",
     "start": "node apps/server/dist/server.js",
     "postinstall": "husky install"
   },

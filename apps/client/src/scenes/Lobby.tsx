@@ -56,7 +56,7 @@ export function Lobby() {
             <div className="flex flex-col max-md:max-w-full max-md:mt-10 grow">
               <a href="/" className="flex items-center gap-3 font-bold mx-[-40px]">
                 <img
-                  src="/assets/home.png"
+                  src="/assets/home1.png"
                   className="hover:scale-125 aspect-square object-cover object-center w-[40px] ml-4 overflow-hidden max-w-full self-start"
                 />
                 <p className="bg-green-200 text-amber-950 shadow-xl font-bold py-1 px-4 rounded-full text-xl">

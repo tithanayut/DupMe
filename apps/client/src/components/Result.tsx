@@ -8,36 +8,67 @@ export function Result() {
 
   if (myScore > otherPlayerScore) {
     return (
-      <div
-        style={{
-          textAlign: 'center',
-          position: 'absolute',
-          fontSize: '25px',
-          top: '20%',
-        }}
-      >
-        <p
+      <div>
+        <div
           style={{
-            fontWeight: 'bold',
-            fontSize: '60px',
+            textAlign: 'center',
+            position: 'relative',
+            fontSize: '25px',
           }}
         >
-          WIN
-        </p>
-        <p>
-          With score {myScore} (you) vs score {otherPlayerScore}, you will be the first player next round
-        </p>
+          <p
+            style={{
+              fontWeight: 'bold',
+              fontSize: '60px',
+            }}
+          >
+            WIN
+          </p>
+          <p>
+            With score {myScore} (you) vs score {otherPlayerScore}, you will be the first player next round
+          </p>
+        </div>
+        <div className="z-40 flex absolute justify-center bottom-0 m-auto left-0 right-0 shadow-2xl">
+          <img src="/assets/hihi3.png" />
+        </div>
       </div>
     );
   }
   if (myScore < otherPlayerScore) {
     return (
+      <div>
+        <div
+          style={{
+            textAlign: 'center',
+            position: 'relative',
+            fontSize: '25px',
+          }}
+        >
+          <p
+            style={{
+              fontWeight: 'bold',
+              fontSize: '60px',
+            }}
+          >
+            LOSE
+          </p>
+          <p>
+            With score {myScore} (you) vs score {otherPlayerScore}, you will be the second player next round
+          </p>
+        </div>
+        <div className="z-40 flex absolute justify-center bottom-0 m-auto left-0 right-0 shadow-2xl">
+          <img src="/assets/hihi4.png" />
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div>
       <div
         style={{
           textAlign: 'center',
-          position: 'absolute',
+          position: 'relative',
           fontSize: '25px',
-          top: '20%',
         }}
       >
         <p
@@ -46,32 +77,13 @@ export function Result() {
             fontSize: '60px',
           }}
         >
-          LOSE
+          You draw
         </p>
-        <p>
-          With score {myScore} (you) vs score {otherPlayerScore}, you will be the second player next round
-        </p>
+        <p>With score {myScore}, next round first start will be random</p>
       </div>
-    );
-  }
-  return (
-    <div
-      style={{
-        textAlign: 'center',
-        position: 'absolute',
-        fontSize: '25px',
-        top: '20%',
-      }}
-    >
-      <p
-        style={{
-          fontWeight: 'bold',
-          fontSize: '60px',
-        }}
-      >
-        You draw
-      </p>
-      <p>With score {myScore}, next round first start will be random</p>
+      <div className="z-40 flex absolute justify-center bottom-0 m-auto left-0 right-0 shadow-2xl">
+        <img src="/assets/hihi3.png" />
+      </div>
     </div>
   );
 }

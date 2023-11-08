@@ -5,6 +5,7 @@ export enum RoomLevel {
 }
 
 export interface Me {
+  socketId: string;
   name: string;
   profilePicture: string;
 }

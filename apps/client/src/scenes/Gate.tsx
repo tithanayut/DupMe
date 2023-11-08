@@ -45,14 +45,15 @@ export function Gate() {
 
   return (
     <div>
-      <img src="/assets/curtainL.png" className="z-20 absolute h-screen left-0" />
-      <img src="/assets/curtainR.png" className="z-20 absolute h-screen right-0" />
+      <img src="/assets/lobblycurtain.png" className="z-30 absolute w-screen top-0" />
+      <img src="/assets/curtainL.png" className="z-20 absolute h-screen left-0 top-0 bottom-0" />
+      <img src="/assets/curtainR.png" className="z-20 absolute h-screen right-0 top-0 bottom-0" />
       <div className="z-10">
         <div style={{ textAlign: 'center' }}>
           <p
             style={{
               position: 'absolute',
-              top: '3%',
+              top: '8%',
               left: '50%',
               transform: 'translate(-50%, 0)',
               fontSize: '18px',
@@ -71,6 +72,7 @@ export function Gate() {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
+              className="z-20 mt-10"
             >
               <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
             </div>

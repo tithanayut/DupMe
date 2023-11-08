@@ -30,13 +30,16 @@ export function Elevator() {
   //style={{ backgroundImage:`url(${image})` }}
   return (
     // <div style={{ backgroundImage: 'url(/break.png)' }}>
-    <div className="bg-rose-200 w-screen h-screen">
-      <img src="/assets/piano.png" />
+    <div className="bg-rose-200 w-screen h-screen flex justify-center">
+      {/* <img src="/assets/piano.png" /> */}
+      <img src="/assets/lobblycurtain.png" className="z-30 absolute w-screen top-0" />
+      <img src="/assets/curtainL.png" className="z-20 absolute h-screen left-0 top-0 bottom-0" />
+      <img src="/assets/curtainR.png" className="z-20 absolute h-screen right-0 top-0 bottom-0" />
 
-      <div className=" mt-10">
-        <div>
+      <div className="z-10 mt-32 ">
+        <div className="">
           {myRoom?.level === 'LV1' && (
-            <p className="w-fit mx-auto ">
+            <p className="w-fit mx-auto">
               <span className="flex justify-center bg-green-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
                 <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
                   {myRoom?.level}
@@ -74,13 +77,13 @@ export function Elevator() {
         </p>
 
         <img
-          src="/assets/hihi.png"
+          src="/assets/hihi5.png"
           onClick={() => onPicClick()}
-          className="flex left-[18%] bottom-0 absolute w-1/4 h-2/6"
+          className=" flex left-[20%] bottom-0 absolute w-[30%] h-2/5"
         />
 
         <p className="max-w-2xl mx-auto flex justify-center text-2xl mt-10 ">Are you ready?</p>
-        <div className="max-w-[15%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">
+        <div className="max-w-[40%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">
           <button onClick={onClickReady}>Ready</button>
         </div>
       </div>

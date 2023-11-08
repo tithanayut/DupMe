@@ -10,9 +10,10 @@ import { Server } from 'socket.io';
 
 import { PAYMENT_ENABLED, PORT } from './common/env';
 import { paymentRoute } from './payment';
-import { GameService, RoomService } from './services/gameroom.service';
+import { GameService } from './services/game.service';
 import { MonitoringService } from './services/monitoring.service';
 import { PlayerService } from './services/player.service';
+import { RoomService } from './services/room.service';
 import { ScoreService } from './services/score.service';
 
 const app = express();

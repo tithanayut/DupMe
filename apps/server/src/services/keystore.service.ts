@@ -1,5 +1,5 @@
 import { io } from '../server';
-import { RoomService } from './gameroom.service';
+import { RoomService } from './room.service';
 
 export const KeyStoreService = {
   appendKey: (roomName: string, key: string) => {

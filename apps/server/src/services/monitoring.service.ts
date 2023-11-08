@@ -1,8 +1,8 @@
 import { GlobalKeyboardListener } from 'node-global-key-listener';
 
 import { io } from '../server';
-import { RoomService } from './gameroom.service';
 import { PlayerService } from './player.service';
+import { RoomService } from './room.service';
 
 let debounced = false;
 

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { Stripe } from 'stripe';
 
 import { NODE_ENV, STRIPE_SECRET_KEY } from './common/env';
-import { RoomService } from './services/gameroom.service';
+import { RoomService } from './services/room.service';
 import { ScoreService } from './services/score.service';
 
 const SITE_BASE_URL = NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://dupme.up.railway.app';

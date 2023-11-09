@@ -12,10 +12,10 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
     // 'https://dupme.up.railway.app/assets/Profile2.png',
     // 'https://dupme.up.railway.app/assets/Profile3.png',
     // 'https://dupme.up.railway.app/assets/Profile4.png',
-    '/assets/Profile8.png',
-    '/assets/Profile6.png',
-    '/assets/Profile7.png',
-    '/assets/Profile5.png',
+    'https://dupme.up.railway.app/assets/Profile8.png',
+    'https://dupme.up.railway.app/assets/Profile6.png',
+    'https://dupme.up.railway.app/assets/Profile7.png',
+    'https://dupme.up.railway.app/assets/Profile5.png',
   ]);
 
   return (

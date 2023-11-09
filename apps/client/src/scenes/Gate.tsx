@@ -8,7 +8,7 @@ import { useGame } from '../contexts/GameContext';
 export function Gate() {
   const nameRef = useRef<HTMLInputElement>(null);
   const googleSignInRef = useRef<HTMLDivElement>(null);
-  const [profilePicture, setProfilePicture] = useState('/assets/Profile8.png');
+  const [profilePicture, setProfilePicture] = useState('https://dupme.up.railway.app/assets/Profile8.png');
   const { setMe } = useGame();
 
   useEffect(() => {
@@ -85,7 +85,6 @@ export function Gate() {
                 textAlign: 'center',
                 border: '2px solid darkgrey',
                 borderRadius: '20px',
-                color: 'black',
               }}
               type="text"
               placeholder="Your Name"

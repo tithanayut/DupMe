@@ -82,7 +82,7 @@ export function Result() {
         <p>With score {myScore}, next round first start will be random</p>
       </div>
       <div className="z-40 flex absolute justify-center bottom-0 m-auto left-0 right-0 shadow-2xl">
-        <img src="/assets/hihi3.png" />
+        <img src="/assets/hihi8.png" />
       </div>
     </div>
   );

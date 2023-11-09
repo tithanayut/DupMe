@@ -23,7 +23,7 @@ export function Break() {
           Other player is {myRoom?.ready[otherPlayerIndex] ? 'Ready' : 'Not Ready'}
         </p>
 
-        <div className="max-w-[35%] mx-auto  flex justify-center bg-green-400 hover:bg-green-600 text-white text-6xl font-bold rounded-full py-4 px-8 mt-10">
+        <div className="shadow-md max-w-[35%] mx-auto  flex justify-center bg-green-400 hover:bg-green-600 text-white text-6xl font-bold rounded-full py-4 px-8 mt-10">
           <button onClick={onClickReady}>Yes</button>
         </div>
         <img src="/assets/hihi7.png" className="absolute right-[20%] bottom-0 w-[30%] h-1/2" />

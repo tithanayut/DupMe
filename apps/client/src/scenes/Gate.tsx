@@ -53,10 +53,10 @@ export function Gate() {
           <p
             style={{
               position: 'absolute',
-              top: '8%',
+              top: '11%',
               left: '50%',
               transform: 'translate(-50%, 0)',
-              fontSize: '18px',
+              fontSize: '14px',
             }}
           >
             Select your profile picture
@@ -72,7 +72,7 @@ export function Gate() {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
-              className="z-20 mt-10"
+              className="z-20 mt-14"
             >
               <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
             </div>

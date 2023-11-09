@@ -72,7 +72,7 @@ body {
 .transparent-button {
   background-color: transparent;
   font-size: 30px;
-  position: absolute;
+  position: fixed;
   right: 10px;
   z-index: 1000;
 }

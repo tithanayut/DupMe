@@ -40,7 +40,7 @@ export function Elevator() {
         <div className="">
           {myRoom?.level === 'LV1' && (
             <p className="w-fit mx-auto">
-              <span className="flex justify-center bg-green-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
+              <span className="shadow-md flex justify-center bg-blue-300 text-white font-bold py-2 px-6 rounded-full text-2xl">
                 <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
                   {myRoom?.level}
                 </span>{' '}
@@ -51,7 +51,7 @@ export function Elevator() {
 
           {myRoom?.level === 'LV2' && (
             <p className="w-fit mx-auto ">
-              <span className="flex justify-center bg-orange-400 text-white font-bold py-2 px-6 rounded-full text-2xl">
+              <span className="shadow-md flex justify-center bg-blue-400 text-white font-bold py-2 px-6 rounded-full text-2xl">
                 <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
                   {myRoom?.level}
                 </span>{' '}
@@ -62,7 +62,7 @@ export function Elevator() {
 
           {myRoom?.level === 'LV3' && (
             <p className="w-fit mx-auto ">
-              <span className="flex justify-center bg-red-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
+              <span className="shadow-md flex justify-center bg-blue-500 text-white font-bold py-2 px-6 rounded-full text-2xl">
                 <span className=" mr-2 place-content-start bg-white text-black font-bold py-1 px-6 rounded-full ">
                   {myRoom?.level}
                 </span>{' '}
@@ -83,7 +83,7 @@ export function Elevator() {
         />
 
         <p className="max-w-2xl mx-auto flex justify-center text-2xl mt-10 ">Are you ready?</p>
-        <div className="max-w-[40%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">
+        <div className="shadow-md max-w-[40%] mx-auto flex justify-center bg-red-500 hover:bg-red-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10">
           <button onClick={onClickReady}>Ready</button>
         </div>
       </div>

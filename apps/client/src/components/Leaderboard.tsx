@@ -8,9 +8,9 @@ export function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
 
   useEffect(() => {
+    socket.emit('leaderboard');
     const onUpdate = (leaderboard: LeaderboardEntry[]) => {
       setLeaderboard(leaderboard);
-      console.log(leaderboard);
     };
     socket.on('leaderboard', onUpdate);
     return () => {

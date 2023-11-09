@@ -50,9 +50,8 @@ function playPianoSound(note: string): void {
 
 export function Game() {
   const { myRoom, myPlayerIndex } = useGame();
+  const MAX_HINT_COUNT = 5;
   const [hintCount, setHintCount] = useState<number>(0);
-  const maxCount = 5;
-  const [hintsLeft, setHintsLeft] = useState<number>(5);
 
   useEffect(() => {
     if (myRoom?.ended) return;
@@ -77,10 +76,6 @@ export function Game() {
     };
     socket.on('wrong', onWrong);
   }, []);
-
-  useEffect(() => {
-    setHintsLeft(5 - hintCount);
-  }, [hintCount]);
 
   const onKeyClick = (key: string) => {
     playPianoSound(key);
@@ -181,12 +176,11 @@ export function Game() {
         )}
 
         {myRoom?.turn === myPlayerIndex && myRoom.state === 'guessing' && (
-          // <div className="flex items-center">
           <button
             className="mx-auto flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white text-5xl font-bold rounded-full py-3 px-6 mt-10 mb-10"
             onClick={() => {
-              if (hintCount < maxCount) {
-                setHintCount(hintCount + 1);
+              if (hintCount < MAX_HINT_COUNT) {
+                setHintCount((prev) => prev + 1);
                 if (myRoom.keys.length !== myRoom.guessedKeys.length) {
                   MySwal.fire({
                     icon: 'question',
@@ -208,7 +202,7 @@ export function Game() {
           >
             💡Hint
             <span className="mr-1 ml-2 place-content-start bg-white text-black py-1 px-4 rounded-full">
-              {hintsLeft}
+              {MAX_HINT_COUNT - hintCount}
             </span>
           </button>
           // </div>

@@ -53,7 +53,7 @@ export function Gate() {
           <p
             style={{
               position: 'absolute',
-              top: '11%',
+              top: '10%',
               left: '50%',
               transform: 'translate(-50%, 0)',
               fontSize: '14px',
@@ -79,7 +79,7 @@ export function Gate() {
             <input
               style={{
                 position: 'absolute',
-                bottom: '35%',
+                bottom: '55%',
                 left: '50%',
                 transform: 'translate(-50%, 0)',
                 textAlign: 'center',
@@ -100,7 +100,7 @@ export function Gate() {
               <div
                 style={{
                   position: 'absolute',
-                  bottom: '25%',
+                  bottom: '45%',
                   left: '50%',
                   transform: 'translate(-50%, 0)',
                 }}
@@ -128,7 +128,7 @@ export function Gate() {
             src="/assets/pianoGate.gif"
             style={{
               position: 'absolute',
-              bottom: '-15%',
+              bottom: '-2%',
               display: 'flex',
             }}
           />

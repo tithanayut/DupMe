@@ -15,7 +15,7 @@ export function Camera({ onCapture }: CameraProps) {
         <button
           style={{
             position: 'absolute',
-            bottom: '40%',
+            bottom: '60%',
             left: '50%',
             transform: 'translate(-50%, 0)',
             border: '2px black solid',
@@ -37,7 +37,7 @@ export function Camera({ onCapture }: CameraProps) {
         <button
           style={{
             position: 'absolute',
-            bottom: '40%',
+            bottom: '60%',
             left: '50%',
             transform: 'translate(-50%, 0)',
             border: '2px black solid',
@@ -66,12 +66,12 @@ export function Camera({ onCapture }: CameraProps) {
       )}
       <video
         ref={videoRef}
-        width="300px"
+        width="240px"
         autoPlay
         style={{
           display: cameraActive ? 'block' : 'none',
           position: 'absolute',
-          bottom: '45%',
+          top: '13%',
           left: '50%',
           transform: 'translate(-50%, 0)',
         }}

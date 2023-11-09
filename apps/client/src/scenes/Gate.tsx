@@ -85,7 +85,6 @@ export function Gate() {
                 textAlign: 'center',
                 border: '2px solid darkgrey',
                 borderRadius: '20px',
-                color: 'black',
               }}
               type="text"
               placeholder="Your Name"

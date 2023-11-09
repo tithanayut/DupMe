@@ -55,6 +55,10 @@ export const GameService = {
     io.emit('rooms', RoomService.getRooms());
   },
   replay: (roomName: string) => {
+    const match = roomName.match(/\((\d+)\)$/);
+    const roomNumber = match ? parseInt(match[1], 10) : 1;
+    console.log(match);
+
     const room = RoomService.getRoom(roomName);
     let nextRoundFirstPlayer: Player;
     let otherPlayer: Player;
@@ -70,8 +74,10 @@ export const GameService = {
     }
 
     RoomService.terminateRoom(roomName);
-    RoomService.createRoom(`${roomName} (2)`, room.level, nextRoundFirstPlayer.socketId, 0);
-    RoomService.joinRoom(`${roomName} (2)`, otherPlayer.socketId);
+    const newRoomNumber = roomNumber + 1;
+    const newRoomName = `${roomName.replace(/\(\d+\)$/, '')} (${newRoomNumber})`;
+    RoomService.createRoom(newRoomName, room.level, nextRoundFirstPlayer.socketId, 0);
+    RoomService.joinRoom(newRoomName, otherPlayer.socketId);
   },
   receiveKey: (roomName: string, socketId: string, key: string) => {
     const room = RoomService.getRoom(roomName);

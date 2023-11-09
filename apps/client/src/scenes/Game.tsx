@@ -38,10 +38,13 @@ function genRandomKey(length: number) {
   return result;
 }
 
-function playPianoSound(note: string) {
-  const audioElement = document.getElementById(`note${note}`);
+function playPianoSound(note: string): void {
+  const audioElement = document.getElementById(`note${note}`) as HTMLAudioElement;
+
   if (audioElement) {
-    (audioElement as HTMLAudioElement).play();
+    audioElement.pause();
+    audioElement.currentTime = 0;
+    audioElement.play();
   }
 }
 

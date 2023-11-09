@@ -8,6 +8,12 @@ export function Exit() {
 
   return (
     <div className="relative bg-cover bg-[url('/assets/bgExit6.png')] min-h-screen min-w-full">
+      <a href="/" className="flex items-center  font-bold ">
+        <img
+          src="/assets/backToGate.png"
+          className="hover:scale-125 aspect-square object-cover object-center w-[40px] ml-4 mt-4 overflow-hidden max-w-full self-start"
+        />
+      </a>
       <div className="z-30">
         <div
           style={{

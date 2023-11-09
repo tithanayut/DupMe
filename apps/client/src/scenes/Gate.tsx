@@ -8,7 +8,7 @@ import { useGame } from '../contexts/GameContext';
 export function Gate() {
   const nameRef = useRef<HTMLInputElement>(null);
   const googleSignInRef = useRef<HTMLDivElement>(null);
-  const [profilePicture, setProfilePicture] = useState('https://dupme.up.railway.app/assets/Profile1.png');
+  const [profilePicture, setProfilePicture] = useState('https://dupme.up.railway.app/assets/Profile8.png');
   const { setMe } = useGame();
 
   useEffect(() => {
@@ -53,10 +53,10 @@ export function Gate() {
           <p
             style={{
               position: 'absolute',
-              top: '8%',
+              top: '11%',
               left: '50%',
               transform: 'translate(-50%, 0)',
-              fontSize: '18px',
+              fontSize: '14px',
             }}
           >
             Select your profile picture
@@ -72,7 +72,7 @@ export function Gate() {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
-              className="z-20 mt-10"
+              className="z-20 mt-14"
             >
               <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
             </div>
@@ -85,7 +85,6 @@ export function Gate() {
                 textAlign: 'center',
                 border: '2px solid darkgrey',
                 borderRadius: '20px',
-                color: 'black',
               }}
               type="text"
               placeholder="Your Name"

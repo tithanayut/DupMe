@@ -47,8 +47,8 @@ export function Lobby() {
 
   return (
     <div className="bg-sky-200 flex flex-col min-h-screen">
-      <img src="/assets/lobblycurtain.png" className="z-10 absolute w-screen top-0" />
-      <img src="/assets/lobbyfloor2.png" className="z-10 absolute w-screen bottom-0" />
+      <img src="/assets/lobblycurtain.png" className="z-10 fixed w-screen top-0" />
+      <img src="/assets/lobbyfloor2.png" className="z-10 fixed w-screen bottom-0" />
 
       <div className="z-20 self-center w-full max-w-[1351px] mt-3.5 max-md:max-w-full">
         <div className="gap-5 flex flex-col md:flex-row mr-14 ml-14 md:m-0">
@@ -56,7 +56,7 @@ export function Lobby() {
             <div className="flex flex-col max-md:max-w-full max-md:mt-10 grow">
               <a href="/" className="flex items-center gap-3 font-bold mx-[-40px]">
                 <img
-                  src="/assets/home1.png"
+                  src="/assets/backToGate.png"
                   className="hover:scale-125 aspect-square object-cover object-center w-[40px] ml-4 overflow-hidden max-w-full self-start"
                 />
                 <p className="bg-green-200 text-amber-950 shadow-xl font-bold py-1 px-4 rounded-full text-xl">

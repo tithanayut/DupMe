@@ -8,12 +8,16 @@ export function Result() {
 
   if (myScore > otherPlayerScore) {
     return (
-      <div>
+      <div className="flex justify-center items-center">
+        <div className="absolute scale-[65%]">
+          <img src="/assets/WinBoard.png" />
+        </div>
         <div
           style={{
             textAlign: 'center',
             position: 'relative',
             fontSize: '25px',
+            color: '#5B1586',
           }}
         >
           <p
@@ -36,12 +40,16 @@ export function Result() {
   }
   if (myScore < otherPlayerScore) {
     return (
-      <div>
+      <div className="flex justify-center items-center">
+        <div className="absolute scale-[65%]">
+          <img src="/assets/LoseBoard.png" />
+        </div>
         <div
           style={{
             textAlign: 'center',
             position: 'relative',
             fontSize: '25px',
+            color: '#FFF95F',
           }}
         >
           <p
@@ -63,12 +71,16 @@ export function Result() {
     );
   }
   return (
-    <div>
+    <div className="flex justify-center items-center">
+      <div className="absolute scale-[65%]">
+        <img src="/assets/DrawBoard.png" />
+      </div>
       <div
         style={{
           textAlign: 'center',
           position: 'relative',
           fontSize: '25px',
+          color: '#FF008A',
         }}
       >
         <p

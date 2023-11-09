@@ -8,9 +8,6 @@ export function Exit() {
 
   return (
     <div className="relative bg-cover bg-[url('/assets/bgExit6.png')] min-h-screen min-w-full">
-      <div className="absolute scale-[65%]">
-        <img src="/assets/winLoseBoard.png" />
-      </div>
       <div className="z-30">
         <div
           style={{

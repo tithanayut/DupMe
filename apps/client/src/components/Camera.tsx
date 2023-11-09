@@ -15,13 +15,13 @@ export function Camera({ onCapture }: CameraProps) {
         <button
           style={{
             position: 'absolute',
-            bottom: '60%',
+            bottom: '35%',
             left: '50%',
-            transform: 'translate(-50%, 0)',
             border: '2px black solid',
             backgroundColor: 'lightgrey',
             borderRadius: '8px',
             width: '140px',
+            transform: 'translate(-50%, 0)',
             color: 'black',
           }}
           onClick={async () => {
@@ -37,13 +37,13 @@ export function Camera({ onCapture }: CameraProps) {
         <button
           style={{
             position: 'absolute',
-            bottom: '60%',
+            bottom: '35%',
             left: '50%',
-            transform: 'translate(-50%, 0)',
             border: '2px black solid',
             backgroundColor: 'lightgrey',
             borderRadius: '8px',
             width: '140px',
+            transform: 'translate(-50%, 0)',
             color: 'black',
           }}
           onClick={() => {
@@ -71,7 +71,7 @@ export function Camera({ onCapture }: CameraProps) {
         style={{
           display: cameraActive ? 'block' : 'none',
           position: 'absolute',
-          top: '13%',
+          bottom: '45%',
           left: '50%',
           transform: 'translate(-50%, 0)',
         }}

@@ -45,17 +45,16 @@ export function Gate() {
 
   return (
     <div>
-      <img src="/assets/lobblycurtain.png" className="z-30 absolute w-screen top-0" />
-      <img src="/assets/curtainL.png" className="z-20 absolute h-screen left-0 top-0 bottom-0" />
-      <img src="/assets/curtainR.png" className="z-20 absolute h-screen right-0 top-0 bottom-0" />
-      <div className="z-10">
-        <div style={{ textAlign: 'center' }}>
+      <img src="/assets/lobblycurtain.png" className="z-30 fixed w-screen top-0" />
+      <img src="/assets/curtainL.png" className="z-20 fixed h-screen left-0 top-0 bottom-0" />
+      <img src="/assets/curtainR.png" className="z-20 fixed h-screen right-0 top-0 bottom-0" />
+      <img src="/assets/pianoGate.gif" className="fixed w-screen bottom-[-2%]" style={{ zIndex: -1 }} />
+      <div className="z-50">
+        <div className="flex flex-col justify-center items-center h-screen space-y-4">
           <p
+            className="mt-4 mx-auto"
             style={{
-              position: 'absolute',
-              top: '10%',
-              left: '50%',
-              transform: 'translate(-50%, 0)',
+              top: '5%',
               fontSize: '14px',
             }}
           >
@@ -72,43 +71,26 @@ export function Gate() {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
-              className="z-20 mt-14"
+              className="z-20 mt-4 "
             >
               <ProfilePictureSelector value={profilePicture} onChange={setProfilePicture} />
             </div>
             <input
               style={{
-                position: 'absolute',
-                bottom: '55%',
-                left: '50%',
-                transform: 'translate(-50%, 0)',
                 textAlign: 'center',
                 border: '2px solid darkgrey',
                 borderRadius: '20px',
               }}
+              className="flex justify-center items-center mx-auto mt-20"
               type="text"
               placeholder="Your Name"
               ref={nameRef}
             />
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '45%',
-                  left: '50%',
-                  transform: 'translate(-50%, 0)',
-                }}
-                ref={googleSignInRef}
-              ></div>
+            <div className="flex justify-center items-center mt-4">
+              <div className="static" ref={googleSignInRef}></div>
             </div>
             <button
-              className="enter-btn"
+              className="enter-btn mx-auto mt-4 z-[200]"
               onClick={() => {
                 if (!nameRef.current || nameRef.current.value === '') {
                   MySwal.fire({
@@ -124,14 +106,6 @@ export function Gate() {
               ENTER
             </button>
           </form>
-          <img
-            src="/assets/pianoGate.gif"
-            style={{
-              position: 'absolute',
-              bottom: '-2%',
-              display: 'flex',
-            }}
-          />
         </div>
       </div>
     </div>

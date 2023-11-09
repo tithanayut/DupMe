@@ -19,10 +19,10 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
   ]);
 
   return (
-    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', height: '100%' }}>
+    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', height: '250px' }}>
       <img
         src="/assets/profileLeft.png"
-        className="scale-[50%] hover:scale-[55%] absolute mr-80 top-[16%] "
+        className="scale-[50%] hover:scale-[55%] mr-30 top-[16%] mt-20 "
         onClick={() => {
           onChange(options[(options.indexOf(value) - 1 + options.length) % options.length]);
         }}
@@ -51,7 +51,7 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
       </div>
       <img
         src="/assets/profileRight.png"
-        className="scale-[50%] hover:scale-[55%] absolute ml-80 top-[16%] "
+        className="scale-[50%] hover:scale-[55%] ml-30 top-[16%] mt-20"
         onClick={() => {
           onChange(options[(options.indexOf(value) + 1) % options.length]);
         }}

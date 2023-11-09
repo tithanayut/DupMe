@@ -88,10 +88,10 @@ body {
   justify-content: center;
   font-size: 26px;
   font-weight: bold;
-  position: absolute;
-  bottom: 35%;
+  /* position: re;
+  /* bottom: 35%;
   right: 4px;
-  margin: auto;
-  left: 0;
-  right: 0;
+  margin: 5%; */
+  /* left: 0;
+  right: 0; */
 }

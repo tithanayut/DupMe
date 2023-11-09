@@ -164,11 +164,16 @@ export function Game() {
           <button
             className=" mx-auto flex justify-center bg-cyan-500 hover:bg-cyan-700 text-white text-5xl font-bold rounded-full py-4 px-8 mt-10 mb-10"
             onClick={() => {
-              var random = genRandomKey(myRoom.keycount);
-
-              for (const r of random) {
-                onKeyClick(r);
-              }
+              const randomKeys = genRandomKey(myRoom.keycount);
+              randomKeys.split('').forEach((key, index) => {
+                if (myRoom.turn === myPlayerIndex && myRoom.time * 1000 - 600 * (index + 1) < 0) return;
+                setTimeout(
+                  () => {
+                    onKeyClick(key);
+                  },
+                  500 * (index + 1),
+                );
+              });
             }}
           >
             Random🎲

@@ -47,8 +47,8 @@ export function Lobby() {
 
   return (
     <div className="bg-sky-200 flex flex-col min-h-screen">
-      <img src="/assets/lobblycurtain.png" className="z-10 absolute w-screen top-0" />
-      <img src="/assets/lobbyfloor2.png" className="z-10 absolute w-screen bottom-0" />
+      <img src="/assets/lobblycurtain.png" className="z-10 fixed w-screen top-0" />
+      <img src="/assets/lobbyfloor2.png" className="z-10 fixed w-screen bottom-0" />
 
       <div className="z-20 self-center w-full max-w-[1351px] mt-3.5 max-md:max-w-full">
         <div className="gap-5 flex flex-col md:flex-row mr-14 ml-14 md:m-0">

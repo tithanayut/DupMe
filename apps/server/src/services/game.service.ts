@@ -57,7 +57,6 @@ export const GameService = {
   replay: (roomName: string) => {
     const match = roomName.match(/\((\d+)\)$/);
     const roomNumber = match ? parseInt(match[1], 10) : 1;
-    console.log(match);
 
     const room = RoomService.getRoom(roomName);
     let nextRoundFirstPlayer: Player;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { MySwal } from '../common/alert';
 import { socket } from '../common/socket';
@@ -50,6 +50,8 @@ function playPianoSound(note: string): void {
 
 export function Game() {
   const { myRoom, myPlayerIndex } = useGame();
+  const MAX_HINT_COUNT = 5;
+  const [hintCount, setHintCount] = useState<number>(0);
 
   useEffect(() => {
     if (myRoom?.ended) return;
@@ -175,23 +177,35 @@ export function Game() {
 
         {myRoom?.turn === myPlayerIndex && myRoom.state === 'guessing' && (
           <button
-            className=" mx-auto flex justify-center bg-pink-500 hover:bg-pink-700 text-white text-5xl font-bold rounded-full py-3 px-6 mt-10 mb-10"
+            className="mx-auto flex items-center justify-center bg-pink-500 hover:bg-pink-700 text-white text-5xl font-bold rounded-full py-3 px-6 mt-10 mb-10"
             onClick={() => {
-              if (myRoom.keys.length != myRoom.guessedKeys.length) {
-                MySwal.fire({
-                  icon: 'question',
-                  title: myRoom.keys[myRoom.guessedKeys.length],
-                });
+              if (hintCount < MAX_HINT_COUNT) {
+                setHintCount((prev) => prev + 1);
+                if (myRoom.keys.length !== myRoom.guessedKeys.length) {
+                  MySwal.fire({
+                    icon: 'question',
+                    title: myRoom.keys[myRoom.guessedKeys.length],
+                  });
+                } else {
+                  MySwal.fire({
+                    icon: 'error',
+                    title: `All answer has been guessed`,
+                  });
+                }
               } else {
                 MySwal.fire({
                   icon: 'error',
-                  title: `All answer has been guessed`,
+                  title: 'No more hints!',
                 });
               }
             }}
           >
-            Hint💡
+            💡Hint
+            <span className="mr-1 ml-2 place-content-start bg-white text-black py-1 px-4 rounded-full">
+              {MAX_HINT_COUNT - hintCount}
+            </span>
           </button>
+          // </div>
         )}
       </div>
     </div>

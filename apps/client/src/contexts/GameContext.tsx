@@ -63,8 +63,8 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     const secretTextWon = () => {
       MySwal.fire({
         icon: 'warning',
-        title: 'Sorry!',
-        text: 'The secret key has been used',
+        title: 'You have lost!',
+        text: 'Unfortunately, the other player has used the secret key.',
       });
     };
     socket.on('wonBySecret', secretTextWon);

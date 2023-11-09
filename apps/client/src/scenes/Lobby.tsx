@@ -65,12 +65,10 @@ export function Lobby() {
                   Welcome {me?.name}!
                 </p>
               </div>
-              <div className="mt-6 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white min-h-[300px] flex grow flex-col pt-9 rounded-[30px] self-end w-full md:w-4/5 justify-start items-center">
+              <div className="mt-6 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white min-h-[300px] dark:bg-neutral-700 flex grow flex-col pt-9 rounded-[30px] self-end w-full md:w-4/5 justify-start items-center">
                 <div className="self-center flex  max-w-full flex-col w-full justify-between items-center grow">
                   <div className="flex flex-col w-full justify-center items-center gap-4 px-8">
-                    <div className="text-black text-2xl font-semibold self-center whitespace-nowrap mb-4">
-                      GAME ROOM
-                    </div>
+                    <div className="text-lime text-2xl font-semibold self-center whitespace-nowrap mb-4">GAME ROOM</div>
                     {rooms.map((room) => (
                       <button
                         key={room.name}
@@ -143,7 +141,7 @@ export function Lobby() {
           </div>
           <div className="flex flex-col items-stretch w-full">
             <div className="flex flex-col md:mt-10 mb-10 md:mb-0 w-full">
-              <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white flex flex-col mt-6 rounded-[30px] md:w-4/5 w-full">
+              <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white dark:bg-neutral-600 flex flex-col mt-6 rounded-[30px] md:w-4/5 w-full">
                 <div className="shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)_inset] bg-amber-500 self-stretch flex flex-col pt-9 rounded-[30px] max-md:max-w-full">
                   <div className="bg-amber-500 self-stretch flex grow pt-0 flex-col  px-5">
                     <div className="self-center mt-[-4px] z-[1] flex ml-0 items-start gap-3.5 pb-3">
@@ -160,7 +158,7 @@ export function Lobby() {
                 </div>
                 <Leaderboard />
               </div>
-              <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white self-stretch flex grow flex-col w-full md:w-4/5 mt-10 justify-between rounded-[30px]">
+              <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white dark:bg-neutral-600 self-stretch flex grow flex-col w-full md:w-4/5 mt-10 justify-between rounded-[30px]">
                 <div className="shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-sky-700 text-center flex flex-col  py-4 rounded-t-[30px] max-md:max-w-full">
                   <div className="text-white text-xl font-semibold self-center w-[243px]">CHAT</div>
                 </div>

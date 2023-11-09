@@ -46,7 +46,7 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
       >
         &lt;
       </button> */}
-      <div style={{ margin: '22px 20px 40px 20px' }}>
+      <div style={{ margin: '20px 20px 40px 20px' }}>
         <img src={value} width={170} height={170} style={{ marginTop: '25%' }} />
       </div>
       <img

@@ -8,15 +8,27 @@ interface ProfilePictureSelectorProps {
 }
 export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelectorProps) {
   const [options, setOptions] = useState([
-    'https://dupme.up.railway.app/assets/Profile1.png',
-    'https://dupme.up.railway.app/assets/Profile2.png',
-    'https://dupme.up.railway.app/assets/Profile3.png',
-    'https://dupme.up.railway.app/assets/Profile4.png',
+    // 'https://dupme.up.railway.app/assets/Profile1.png',
+    // 'https://dupme.up.railway.app/assets/Profile2.png',
+    // 'https://dupme.up.railway.app/assets/Profile3.png',
+    // 'https://dupme.up.railway.app/assets/Profile4.png',
+    '/assets/Profile8.png',
+    '/assets/Profile6.png',
+    '/assets/Profile7.png',
+    '/assets/Profile5.png',
   ]);
 
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', height: '100%' }}>
-      <button
+      <img
+        src="/assets/profileLeft.png"
+        className="scale-[50%] hover:scale-[55%] absolute mr-80 top-[16%] "
+        onClick={() => {
+          onChange(options[(options.indexOf(value) - 1 + options.length) % options.length]);
+        }}
+      />
+
+      {/* <button
         style={{
           fontSize: '20px',
           fontWeight: 'bold',
@@ -33,11 +45,18 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
         }}
       >
         &lt;
-      </button>
+      </button> */}
       <div style={{ margin: '20px 20px 40px 20px' }}>
-        <img src={value} width={150} height={150} style={{ marginTop: '25%' }} />
+        <img src={value} width={170} height={170} style={{ marginTop: '25%' }} />
       </div>
-      <button
+      <img
+        src="/assets/profileRight.png"
+        className="scale-[50%] hover:scale-[55%] absolute ml-80 top-[16%] "
+        onClick={() => {
+          onChange(options[(options.indexOf(value) + 1) % options.length]);
+        }}
+      />
+      {/* <button
         style={{
           fontSize: '20px',
           fontWeight: 'bold',
@@ -54,7 +73,7 @@ export function ProfilePictureSelector({ value, onChange }: ProfilePictureSelect
         }}
       >
         &gt;
-      </button>
+      </button> */}
       <Camera
         onCapture={(data) => {
           setOptions((options) => [...options, data]);

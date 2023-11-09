@@ -54,15 +54,17 @@ export function Lobby() {
         <div className="gap-5 flex flex-col md:flex-row mr-14 ml-14 md:m-0">
           <div className="flex flex-col items-stretch w-full max-md:ml-0">
             <div className="flex flex-col max-md:max-w-full max-md:mt-10 grow">
-              <a href="/" className="flex items-center gap-3 font-bold mx-[-40px]">
-                <img
-                  src="/assets/backToGate.png"
-                  className="hover:scale-125 aspect-square object-cover object-center w-[40px] ml-4 overflow-hidden max-w-full self-start"
-                />
+              <div className="flex items-center gap-3 font-bold mx-[-40px]">
+                <a href="/">
+                  <img
+                    src="/assets/backToGate.png"
+                    className="hover:scale-125 aspect-square object-cover object-center w-[40px] ml-4 overflow-hidden max-w-full self-start"
+                  />
+                </a>
                 <p className="bg-green-200 text-amber-950 shadow-xl font-bold py-1 px-4 rounded-full text-xl">
                   Welcome {me?.name}!
                 </p>
-              </a>
+              </div>
               <div className="mt-6 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)_inset] bg-white dark:bg-neutral-700 min-h-[300px] flex grow flex-col pt-9 rounded-[30px] self-end w-full md:w-4/5 justify-start items-center">
                 <div className="self-center flex  max-w-full flex-col w-full justify-between items-center grow">
                   <div className="flex flex-col w-full justify-center items-center gap-4 px-8">

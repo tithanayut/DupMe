@@ -22,6 +22,9 @@ export const ScoreService = {
     }
 
     io.emit('rooms', RoomService.getRooms());
+    ScoreService.updateLeaderboard();
+  },
+  updateLeaderboard: () => {
     io.emit(
       'leaderboard',
       Object.entries(leaderboard)

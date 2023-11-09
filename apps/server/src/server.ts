@@ -54,6 +54,10 @@ io.on('connection', (socket) => {
     done(RoomService.getRooms());
   });
 
+  socket.on('leaderboard', () => {
+    ScoreService.updateLeaderboard();
+  });
+
   socket.on('register', (name, profilePicutre, done) => {
     try {
       PlayerService.registerPlayer(socket.id, name, profilePicutre);

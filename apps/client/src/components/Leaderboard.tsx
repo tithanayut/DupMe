@@ -8,9 +8,9 @@ export function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
 
   useEffect(() => {
+    socket.emit('leaderboard');
     const onUpdate = (leaderboard: LeaderboardEntry[]) => {
       setLeaderboard(leaderboard);
-      console.log(leaderboard);
     };
     socket.on('leaderboard', onUpdate);
     return () => {
@@ -19,7 +19,7 @@ export function Leaderboard() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5 my-6">
+    <div className="min-h-[180px] flex flex-col gap-5 my-6">
       {leaderboard.length > 0 && (
         <div className="flex flex-col items-center gap-1">
           <img className="w-14 h-14" src="/assets/king.svg" />
